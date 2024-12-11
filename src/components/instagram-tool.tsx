@@ -12,11 +12,9 @@ import {
 } from './ui/command';
 import { Label } from './ui/label';
 
-type JSONData = Record<string, any>;
-
 export default function InstagramTool() {
-  const [followers, setFollowers] = useState<JSONData | null>(null);
-  const [following, setFollowing] = useState<JSONData | null>(null);
+  const [followers, setFollowers] = useState<string[]>();
+  const [following, setFollowing] = useState<string[]>();
 
   const innerJoin = followers?.filter((handle: string) =>
     following?.includes(handle)
