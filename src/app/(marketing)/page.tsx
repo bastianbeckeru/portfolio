@@ -1,93 +1,189 @@
+import {
+  ArrowUpRight,
+  Github,
+  Linkedin,
+  Mail,
+  ExternalLink,
+  Download,
+  Instagram,
+} from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-
-const blogPosts = [
-  {
-    id: 1,
-    title: 'The Art of Minimalism',
-    date: '2024-10-15',
-    excerpt: 'Exploring the beauty of simplicity in design and life.',
-  },
-  {
-    id: 2,
-    title:
-      'Reforma Estatutaria Centro de Estudiantes de Ingeniería Civil Industrial 2024',
-    date: '2024-10-25',
-    excerpt: 'How slowing down can lead to a more fulfilling life.',
-  },
-  {
-    id: 3,
-    title: 'The Power of Habit',
-    date: '2024-10-05',
-    excerpt: 'Small changes that can transform your daily routine.',
-  },
-];
+import { Button, buttonVariants } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import Footer from '@/components/footer';
+import { cn } from '@/lib/utils';
+import ExperienceCard from '@/components/experience-card';
+import ProjectCard from '@/components/project-card';
 
 export default function Home() {
+  const projects = [
+    {
+      title: 'MiMalla',
+      description:
+        'A modern e-commerce solution built with Next.js and Stripe integration.',
+      image: '/placeholder.svg?height=300&width=400',
+      tech: ['Next.js', 'TypeScript', 'Tailwind CSS'],
+      github: '#',
+      live: 'mimalla.vercel.app',
+    },
+    {
+      title: 'Task Management App',
+      description:
+        'Collaborative task management tool with real-time updates and team features.',
+      image: '/placeholder.svg?height=300&width=400',
+      tech: ['React', 'Node.js', 'Socket.io', 'MongoDB'],
+      github: '#',
+      live: '#',
+    },
+    {
+      title: 'Weather Dashboard',
+      description:
+        'Beautiful weather application with location-based forecasts and analytics.',
+      image: '/placeholder.svg?height=300&width=400',
+      tech: ['Vue.js', 'Chart.js', 'OpenWeather API', 'CSS3'],
+      github: '#',
+      live: '#',
+    },
+  ];
+
+  const experiences = [
+    {
+      role: 'Vocero',
+      organization: 'Confederación de Estudiantes de Chile',
+      location: 'Santiago, Chile',
+      period: 'Abr 2025 – Presente',
+      description:
+        'Muevo la voz de los estudiantes que busca mejorar la vida estudiantil a través de la organización, la tecnología y el acceso a la información.',
+    },
+    {
+      role: 'Presidente',
+      organization: 'Federación de Estudiantes UDP',
+      location: 'Universidad Diego Portales',
+      period: 'Abr 2025 – Presente',
+      description:
+        'Lidero una federación que busca mejorar la vida estudiantil a través de la organización, la tecnología y el acceso a la información.',
+    },
+    {
+      role: 'Vicepresidente',
+      organization: 'Centro de Estudiantes de Ingeniería Civil Industrial',
+      location: 'Universidad Diego Portales',
+      period: 'Dic 2023 – Nov 2024',
+      description:
+        'Coordiné iniciativas estudiantiles, gestioné proyectos con impacto en bienestar y representatividad del estudiantado.',
+    },
+  ];
+
   return (
-    <main className='flex flex-col row-start-2 items-center sm:items-start justify-items-center p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]'>
-      <Image
-        className='dark:invert'
-        src='/next.svg'
-        alt='Next.js logo'
-        width={180}
-        height={38}
-        priority
-      />
-      <ol className='list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]'>
-        <li className='mb-2'>
-          Get started by editing{' '}
-          <code className='bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold'>
-            src/app/page.tsx
-          </code>
-          .
-        </li>
-        <li>Save and see your changes instantly.</li>
-      </ol>
+    <main className='min-h-screen max-w-3xl mx-auto px-6 lg:px-8 py-16 '>
+      {/* Hero Section */}
+      <section className='gap-6 md:gap-8 flex flex-col h-auto md:h-40 md:flex-row items-center justify-center'>
+        <div className='size-40 shrink-0'>
+          <Avatar className='size-full'>
+            <AvatarImage src='profile.png' alt='@bastianbeckeru' />
+            <AvatarFallback>Bastián Becker</AvatarFallback>
+          </Avatar>
+        </div>
 
-      <div className='flex gap-4 items-center flex-col sm:flex-row'>
-        <a
-          className='rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5'
-          href='https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          <Image
-            className='dark:invert'
-            src='/vercel.svg'
-            alt='Vercel logomark'
-            width={20}
-            height={20}
-          />
-          Deploy now
-        </a>
-        <a
-          className='rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44'
-          href='https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          Read our docs
-        </a>
-      </div>
+        <div className='flex-1 gap-2 flex flex-col h-full'>
+          <h1 className='text-2xl lg:text-4xl leading-tight font-bold'>
+            Bastián Becker Urzúa
+          </h1>
+          <p className='text-lg leading-relaxed flex-1 md:text-balance'>
+            Estudiante de Ingeniería y amante del diseño, con ganas de aportar
+            al bien común desde la tecnología y la organización.
+          </p>
 
-      {blogPosts.map((post) => (
-        <article
-          key={post.id}
-          className='mb-8 pb-8 border-b border-gray-200 last:border-b-0'
-        >
-          <h2 className='text-2xl font-semibold mb-2'>
-            <Link
-              href={`/post/${post.id}`}
-              className='text-gray-900 hover:text-gray-600 transition-colors'
+          <div className='flex gap-4 flex-row items-center justify-center md:justify-start mt-2 md:mt-0'>
+            <a
+              href='https://www.instagram.com/bastianbeckeru/'
+              target='_blank'
+              rel='noopener noreferrer'
+              className={cn(
+                buttonVariants({ variant: 'ghost', size: 'icon' }),
+                '[&_svg]:size-6 [&_svg]:text-rose-500 bg-rose-500/10'
+              )}
             >
-              {post.title}
-            </Link>
-          </h2>
-          <time className='text-sm text-gray-500 mb-2 block'>{post.date}</time>
-          <p className='text-gray-700'>{post.excerpt}</p>
-        </article>
-      ))}
+              <Instagram />
+            </a>
+            <a
+              href='https://www.linkedin.com/in/bastianbeckeru/'
+              target='_blank'
+              rel='noopener noreferrer'
+              className={cn(
+                buttonVariants({ variant: 'ghost', size: 'icon' }),
+                '[&_svg]:size-6 [&_svg]:text-rose-500 bg-rose-500/10'
+              )}
+            >
+              <Linkedin />
+            </a>
+            <a
+              href='https://github.com/bastianbeckeru'
+              target='_blank'
+              rel='noopener noreferrer'
+              className={cn(
+                buttonVariants({ variant: 'ghost', size: 'icon' }),
+                '[&_svg]:size-6 [&_svg]:text-rose-500 bg-rose-500/10'
+              )}
+            >
+              <Github />
+            </a>
+
+            <Button className='bg-rose-500'>
+              Curriculum
+              <Download />
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      <div className='h-px w-full bg-foreground/10 my-16 hidden'></div>
+
+      {/* Thoughts Section */}
+      <section id='thoughts' className='hidden'>
+        <h2 className='text-3xl font-medium'>Pensamientos</h2>
+      </section>
+
+      <div className='h-px w-full bg-foreground/10 my-16'></div>
+
+      {/* Experience Section */}
+      <section id='experience' className='flex flex-col gap-4'>
+        <h2 className='text-3xl font-medium'>Experiencias</h2>
+        <ol className='flex flex-col gap-2'>
+          {experiences.map((exp, index) => (
+            <ExperienceCard key={index} {...exp} />
+          ))}
+        </ol>
+      </section>
+
+      <div className='h-px w-full bg-foreground/10 my-16'></div>
+
+      {/* Projects Section */}
+      <section id='projects' className='flex flex-col gap-4'>
+        <h2 className='text-3xl font-medium'>Proyectos</h2>
+        <div className='grid md:grid-cols-2 md:grid-rows-2 gap-8'>
+          {projects.map((project, index) => (
+            <ProjectCard key={index} {...project} />
+          ))}
+        </div>
+      </section>
     </main>
   );
 }
+
+/* 
+              <p className='text-gray-600 mb-6 leading-relaxed'>
+                I believe that technology should serve a purpose beyond just
+                functionality. It should enhance our lives, foster connections,
+                and empower individuals to achieve their goals. In my work, I
+                strive to create solutions that are not only effective but also
+                meaningful.
+              </p>
+              <p className='text-gray-600 leading-relaxed'>
+                Continuous learning is essential in this fast-paced industry. I
+                make it a priority to stay updated with the latest trends and
+                best practices, whether through online courses, workshops, or
+                collaboration with peers.
+              </p>
+*/

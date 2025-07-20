@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
+import type { PropsWithChildren } from 'react';
+import '@/styles/globals.css';
 import localFont from 'next/font/local';
-import './globals.css';
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
@@ -18,11 +19,7 @@ export const metadata: Metadata = {
   description: 'A minimalist blog.',
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: Readonly<PropsWithChildren>) {
   return (
     <html lang='es'>
       <body

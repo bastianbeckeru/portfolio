@@ -1,5 +1,5 @@
+import Navbar from '@/components/header';
 import Footer from '@/components/footer';
-import Navbar from '@/components/navbar';
 
 export default function HomeLayout({
   children,
@@ -8,7 +8,7 @@ export default function HomeLayout({
 }>) {
   return (
     <div className='grid min-h-dvh grid-rows-[auto_1fr_auto]'>
-      <Navbar />
+      {/* <Header /> */}
       {children}
       <Footer />
     </div>
