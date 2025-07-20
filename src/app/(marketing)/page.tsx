@@ -1,80 +1,14 @@
-import {
-  ArrowUpRight,
-  Github,
-  Linkedin,
-  Mail,
-  ExternalLink,
-  Download,
-  Instagram,
-} from 'lucide-react';
-import Image from 'next/image';
-import Link from 'next/link';
+import { Github, Linkedin, Download, Instagram } from 'lucide-react';
 import { Button, buttonVariants } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import Footer from '@/components/footer';
 import { cn } from '@/lib/utils';
 import ExperienceCard from '@/components/experience-card';
 import ProjectCard from '@/components/project-card';
+import { articles, experiences, projects } from '@/server/db';
+import ArticleCard from '@/components/article-card';
 
 export default function Home() {
-  const projects = [
-    {
-      title: 'MiMalla',
-      description:
-        'A modern e-commerce solution built with Next.js and Stripe integration.',
-      image: '/placeholder.svg?height=300&width=400',
-      tech: ['Next.js', 'TypeScript', 'Tailwind CSS'],
-      github: '#',
-      live: 'mimalla.vercel.app',
-    },
-    {
-      title: 'Task Management App',
-      description:
-        'Collaborative task management tool with real-time updates and team features.',
-      image: '/placeholder.svg?height=300&width=400',
-      tech: ['React', 'Node.js', 'Socket.io', 'MongoDB'],
-      github: '#',
-      live: '#',
-    },
-    {
-      title: 'Weather Dashboard',
-      description:
-        'Beautiful weather application with location-based forecasts and analytics.',
-      image: '/placeholder.svg?height=300&width=400',
-      tech: ['Vue.js', 'Chart.js', 'OpenWeather API', 'CSS3'],
-      github: '#',
-      live: '#',
-    },
-  ];
-
-  const experiences = [
-    {
-      role: 'Vocero',
-      organization: 'Confederación de Estudiantes de Chile',
-      location: 'Santiago, Chile',
-      period: 'Abr 2025 – Presente',
-      description:
-        'Muevo la voz de los estudiantes que busca mejorar la vida estudiantil a través de la organización, la tecnología y el acceso a la información.',
-    },
-    {
-      role: 'Presidente',
-      organization: 'Federación de Estudiantes UDP',
-      location: 'Universidad Diego Portales',
-      period: 'Abr 2025 – Presente',
-      description:
-        'Lidero una federación que busca mejorar la vida estudiantil a través de la organización, la tecnología y el acceso a la información.',
-    },
-    {
-      role: 'Vicepresidente',
-      organization: 'Centro de Estudiantes de Ingeniería Civil Industrial',
-      location: 'Universidad Diego Portales',
-      period: 'Dic 2023 – Nov 2024',
-      description:
-        'Coordiné iniciativas estudiantiles, gestioné proyectos con impacto en bienestar y representatividad del estudiantado.',
-    },
-  ];
-
   return (
     <main className='min-h-screen max-w-3xl mx-auto px-6 lg:px-8 py-16 '>
       {/* Hero Section */}
@@ -138,11 +72,16 @@ export default function Home() {
         </div>
       </section>
 
-      <div className='h-px w-full bg-foreground/10 my-16 hidden'></div>
+      <div className='h-px w-full bg-foreground/10 my-16'></div>
 
       {/* Thoughts Section */}
-      <section id='thoughts' className='hidden'>
+      <section id='thoughts' className='flex flex-col gap-4'>
         <h2 className='text-3xl font-medium'>Pensamientos</h2>
+        <div className='grid grid-cols-1 md:grid-cols-2 gap-8'>
+          {articles.map((article, index) => (
+            <ArticleCard key={index} {...article} />
+          ))}
+        </div>
       </section>
 
       <div className='h-px w-full bg-foreground/10 my-16'></div>
@@ -161,8 +100,8 @@ export default function Home() {
 
       {/* Projects Section */}
       <section id='projects' className='flex flex-col gap-4'>
-        <h2 className='text-3xl font-medium'>Proyectos</h2>
-        <div className='grid md:grid-cols-2 md:grid-rows-2 gap-8'>
+        <h2 className='text-3xl font-medium'>Proyectos y Herramientas</h2>
+        <div className='grid md:grid-cols-2 gap-8'>
           {projects.map((project, index) => (
             <ProjectCard key={index} {...project} />
           ))}

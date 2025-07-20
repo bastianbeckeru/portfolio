@@ -15,7 +15,7 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Bastián's Blog",
+  title: 'Bastián Becker',
   description: 'A minimalist blog.',
 };
 

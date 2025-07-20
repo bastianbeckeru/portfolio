@@ -1,70 +1,55 @@
 import Image from 'next/image';
-import { Card, CardContent } from './ui/card';
 import Link from 'next/link';
+import { Card, CardContent } from './ui/card';
 import { ExternalLink, Github } from 'lucide-react';
+import { AspectRatio } from './ui/aspect-ratio';
+import { formatDate, slugify } from '@/utils/strings';
 
-type ProjectCardProps = {
-  image: string;
+type ArticleCardProps = {
   title: string;
   description: string;
-  tech: string[];
-  github: string;
-  live: string;
+  image: string;
+  publishedAt: string;
+  readTime: number;
+  category: string;
 };
 
 export default function ArticleCard({
-  image,
   title,
   description,
-  tech,
-  github,
-  live,
-}: ProjectCardProps) {
+  image,
+  publishedAt,
+  readTime,
+  category,
+}: ArticleCardProps) {
   return (
-    <Card className='group hover:shadow-lg p-0 transition-shadow duration-300 border-0 shadow-sm'>
-      <CardContent className='p-0'>
-        <div className='aspect-video overflow-hidden rounded-t-lg bg-gray-100'>
-          <Image
-            src={image || '/placeholder.svg'}
-            alt={title}
-            width={400}
-            height={300}
-            className='object-cover w-full h-full group-hover:scale-105 transition-transform duration-300'
-          />
-        </div>
-        <div className='p-6'>
-          <h3 className='text-xl font-semibold text-gray-900 mb-2'>{title}</h3>
-          <p className='text-gray-600 mb-4 text-sm leading-relaxed'>
-            {description}
-          </p>
-          <div className='flex flex-wrap gap-2 mb-4'>
-            {tech.map((t) => (
-              <span
-                key={t}
-                className='px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded'
-              >
-                {t}
-              </span>
-            ))}
-          </div>
-          <div className='flex gap-3'>
-            <Link
-              href={github}
-              className='flex items-center text-gray-600 hover:text-gray-900 transition-colors text-sm'
-            >
-              <Github className='size-4 mr-1' />
-              Code
-            </Link>
-            <Link
-              href={live}
-              className='flex items-center text-gray-600 hover:text-gray-900 transition-colors text-sm'
-            >
-              <ExternalLink className='size-4 mr-1' />
-              Live Demo
-            </Link>
-          </div>
-        </div>
-      </CardContent>
-    </Card>
+    <AspectRatio
+      ratio={4 / 4}
+      className='rounded-md overflow-hidden text-white'
+    >
+      <Image
+        src={image || '/placeholder.svg'}
+        alt={title}
+        fill
+        className='object-cover -z-10 transition-opacity'
+      />
+
+      <Link
+        href={`/article/${slugify(title)}`}
+        className='py-6 gap-2 flex-col px-8 justify-end size-full items-center  text-shadow flex'
+      >
+        <p className='font-bold text-xs text-inherit'>
+          {category.toUpperCase()}
+        </p>
+        <h2 className='font-medium text-left text-xl md:text-2xl text-pretty'>
+          {title}
+        </h2>
+        <p className=' text-xs'>
+          <time dateTime={publishedAt}>{formatDate(publishedAt)}</time>
+          <span className='mx-2'>•</span>
+          <span>{readTime} min read</span>
+        </p>
+      </Link>
+    </AspectRatio>
   );
 }

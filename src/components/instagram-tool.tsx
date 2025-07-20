@@ -67,7 +67,7 @@ export default function InstagramTool() {
       <section className='py-6 gap-2 w-2/4 flex flex-col justify-center items-center border rounded-lg'>
         <div className='grid w-full max-w-sm items-center gap-1.5'>
           <div className='flex flex-row gap-2 justify-between'>
-            <Label htmlFor='followers' className='text-white font-bold'>
+            <Label htmlFor='followers' className='font-bold'>
               Seguidores
             </Label>
             <span className='text-muted-foreground text-xs italic'>
@@ -84,7 +84,7 @@ export default function InstagramTool() {
 
         <div className='grid w-full max-w-sm items-center gap-1.5'>
           <div className='flex flex-row gap-2 justify-between'>
-            <Label htmlFor='following' className='text-white font-bold'>
+            <Label htmlFor='following' className='font-bold'>
               Seguidos
             </Label>
             <span className='text-muted-foreground text-xs italic'>
@@ -102,7 +102,7 @@ export default function InstagramTool() {
 
       {followers?.length && following?.length ? (
         <section className='p-2 flex items-center flex-col gap-2'>
-          <div className='text-white flex items-center flex-col gap-2'>
+          <div className='flex items-center flex-col gap-2'>
             <div className='flex flex-row gap-4'>
               <div className='flex justify-center items-center flex-col text-xl font-bold'>
                 <span>{followers?.length}</span>
@@ -115,9 +115,31 @@ export default function InstagramTool() {
             </div>
           </div>
 
+          <div className='flex-col flex gap-2'>
+            <p>
+              <span className='font-bold'>A:</span> Seguidores
+            </p>
+            <p>
+              <span className='font-bold'>B:</span> Seguidos
+            </p>
+
+            <p>
+              <span className='font-bold'>A ∩ B:</span> Personas que tú sigues y
+              te siguen
+            </p>
+            <p>
+              <span className='font-bold'>A - B:</span> Seguidos que no te
+              siguen
+            </p>
+            <p>
+              <span className='font-bold'>B - A:</span> Seguidores que tú no
+              sigues
+            </p>
+          </div>
+
           <div className='flex flex-row gap-2'>
             <div>
-              <h2 className='text-white'>Left: {leftJoin?.length}</h2>
+              <h2 className=''>B - A: {leftJoin?.length}</h2>
               <Command className='h-72'>
                 <CommandInput placeholder='Search follower...' />
                 <CommandList>
@@ -131,7 +153,7 @@ export default function InstagramTool() {
               </Command>
             </div>
             <div>
-              <h2 className='text-white'>Mid: {innerJoin?.length}</h2>
+              <h2 className=''>A ∩ B: {innerJoin?.length}</h2>
               <Command className='h-72'>
                 <CommandInput placeholder='Search follower...' />
                 <CommandList>
@@ -145,7 +167,7 @@ export default function InstagramTool() {
               </Command>
             </div>
             <div>
-              <h2 className='text-white'>Right: {rightJoin?.length}</h2>
+              <h2 className=''>A - B: {rightJoin?.length}</h2>
               <Command className='h-72'>
                 <CommandInput placeholder='Search follower...' />
                 <CommandList>
