@@ -1,9 +1,18 @@
 export const projects = [
   {
+    title: 'FEDEP',
+    description:
+      'Sitio web oficial de la Federación de Estudiantes de la Universidad Diego Portales.',
+    image: '/placeholder.svg',
+    tech: ['Next.js', 'TypeScript', 'Tailwind CSS'],
+    github: '#',
+    live: 'fedep.cl',
+  },
+  {
     title: 'MiMalla',
     description:
       'Plataforma de gestión de mallas curriculares para estudiantes universitarios.',
-    image: '/placeholder.svg?height=300&width=400',
+    image: '/placeholder.svg',
     tech: ['Next.js', 'TypeScript', 'Tailwind CSS'],
     github: '#',
     live: 'mimalla.vercel.app',
@@ -12,7 +21,7 @@ export const projects = [
     title: 'Instagram Followers Tool',
     description:
       'Herramienta para gestionar y analizar seguidores de Instagram.',
-    image: '/placeholder.svg?height=300&width=400',
+    image: '/placeholder.svg',
     tech: ['React', 'TypeScript'],
     github: '#',
     live: '/tools/instagram',
@@ -51,7 +60,7 @@ export const articles = [
     title: '¿Quién fue y es Diego Portales?',
     description:
       'Diego Portales fue un destacado político y empresario chileno, considerado uno de los padres de la patria en Chile. Su legado perdura en la historia del país.',
-    image: '/images/diego-portales.webp?height=300&width=400',
+    image: '/images/diego-portales.webp',
     publishedAt: '2025-07-21',
     readTime: 5,
     category: 'Historia',
@@ -60,7 +69,7 @@ export const articles = [
     title: 'Participación y Representación Estudiantil',
     description:
       'Explora la importancia de la participación estudiantil en la vida académica y social, y cómo influye en la toma de decisiones dentro de las instituciones educativas.',
-    image: '/placeholder.svg?height=300&width=400',
+    image: '/placeholder.svg',
     publishedAt: '2025-07-21',
     readTime: 2,
     category: 'Política',

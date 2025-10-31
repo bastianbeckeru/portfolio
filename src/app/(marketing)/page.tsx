@@ -7,6 +7,7 @@ import ExperienceCard from '@/components/experience-card';
 import ProjectCard from '@/components/project-card';
 import { articles, experiences, projects } from '@/server/db';
 import ArticleCard from '@/components/article-card';
+import DownloadButton from '@/components/download-button';
 
 export default function Home() {
   return (
@@ -36,7 +37,7 @@ export default function Home() {
               rel='noopener noreferrer'
               className={cn(
                 buttonVariants({ variant: 'ghost', size: 'icon' }),
-                '[&_svg]:size-6 [&_svg]:text-rose-500 bg-rose-500/10'
+                '[&_svg]:size-6 hidden [&_svg]:text-rose-500 bg-rose-500/10'
               )}
             >
               <Instagram />
@@ -64,17 +65,19 @@ export default function Home() {
               <Github />
             </a>
 
-            <Button className='bg-rose-500'>
-              Curriculum
-              <Download />
-            </Button>
+            <DownloadButton
+              media={{
+                name: 'Curriculum',
+                url: '/files/cv-bastian_becker.pdf',
+              }}
+            />
           </div>
         </div>
       </section>
 
       <div className='h-px w-full bg-foreground/10 my-16'></div>
 
-      {/* Thoughts Section */}
+      {/* Thoughts Section 💭✍️ */}
       <section id='thoughts' className='flex flex-col gap-4'>
         <h2 className='text-3xl font-medium'>Pensamientos</h2>
         <div className='grid grid-cols-1 md:grid-cols-2 gap-8'>
@@ -86,7 +89,7 @@ export default function Home() {
 
       <div className='h-px w-full bg-foreground/10 my-16'></div>
 
-      {/* Experience Section */}
+      {/* Experience Section 💼 */}
       <section id='experience' className='flex flex-col gap-4'>
         <h2 className='text-3xl font-medium'>Experiencias</h2>
         <ol className='flex flex-col gap-2'>
@@ -98,7 +101,7 @@ export default function Home() {
 
       <div className='h-px w-full bg-foreground/10 my-16'></div>
 
-      {/* Projects Section */}
+      {/* Projects Section 🧪 */}
       <section id='projects' className='flex flex-col gap-4'>
         <h2 className='text-3xl font-medium'>Proyectos y Herramientas</h2>
         <div className='grid md:grid-cols-2 gap-8'>

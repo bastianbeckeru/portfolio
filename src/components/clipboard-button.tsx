@@ -18,9 +18,9 @@ export default function ClipboardButton({ text }: { text: string }) {
       onClick={handleCopy}
       size='icon'
       variant='ghost'
-      className='text-muted-foreground hover:text-white'
+      className='text-muted-foreground hover:text-white [&_svg]:size-4'
     >
-      {copied ? <Check className='size-4' /> : <Copy className='size-4' />}
+      {copied ? <Check /> : <Copy />}
     </Button>
   );
 }
