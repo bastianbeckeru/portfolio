@@ -1,17 +1,14 @@
 import type { Metadata } from 'next';
 import type { PropsWithChildren } from 'react';
 import '@/styles/globals.css';
-import localFont from 'next/font/local';
+import { Poppins } from 'next/font/google';
 
-const geistSans = localFont({
-  src: './fonts/GeistVF.woff',
-  variable: '--font-geist-sans',
-  weight: '100 900',
-});
-const geistMono = localFont({
-  src: './fonts/GeistMonoVF.woff',
-  variable: '--font-geist-mono',
-  weight: '100 900',
+const poppins = Poppins({
+  variable: '--font-poppins',
+  subsets: ['latin'],
+  style: ['normal', 'italic'],
+  weight: ['400', '500', '600', '700', '800'], // base, medium, semi-bold, bold, extra-bold
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
@@ -22,11 +19,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<PropsWithChildren>) {
   return (
     <html lang='es'>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
+      <body className={`${poppins.variable} antialiased`}>{children}</body>
     </html>
   );
 }

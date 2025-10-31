@@ -11,7 +11,7 @@ import DownloadButton from '@/components/download-button';
 
 export default function Home() {
   return (
-    <main className='min-h-screen max-w-3xl mx-auto px-6 lg:px-8 py-16 '>
+    <main className='min-h-screen max-w-3xl mx-auto px-6 lg:px-8 py-16'>
       {/* Hero Section */}
       <section className='gap-6 md:gap-8 flex flex-col h-auto md:h-40 md:flex-row items-center justify-center'>
         <div className='size-40 shrink-0'>
