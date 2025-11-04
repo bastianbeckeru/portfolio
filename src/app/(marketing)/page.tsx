@@ -26,8 +26,8 @@ export default function Home() {
             Bastián Becker Urzúa
           </h1>
           <p className='text-lg leading-relaxed flex-1 md:text-balance'>
-            Estudiante de Ingeniería y amante del diseño, con ganas de aportar
-            al bien común desde la tecnología y la organización.
+            Estudiante de Ingeniería y amante del diseño, con interés de aportar
+            a la sociedad desde la tecnología y la organización.
           </p>
 
           <div className='flex gap-4 flex-row items-center justify-center md:justify-start mt-2 md:mt-0'>

@@ -1,14 +1,13 @@
 import ClipboardButton from './clipboard-button';
 import { Button } from './ui/button';
 
-export default function Footer() {
-  const email = 'bastianbeckeru@gmail.com';
+//const email = 'bastian.becker.u@gmail.com';
+const email = 'contacto@bastianbecker.cl';
 
+export default function Footer() {
   return (
     <footer className='border-t mt-20 pt-10 pb-6 text-sm text-muted-foreground text-center'>
       <div className='flex flex-col items-center gap-2'>
-        <p>¿Hablamos?</p>
-
         <div className='flex items-center gap-2'>
           <a
             href={`mailto:${email}`}

@@ -140,6 +140,11 @@ a {
   }
 }
 
-.noise-filter {
+.noise-filter::before {
+  content: '';
   background: url('data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PScwIDAgMjAwIDIwMCcgeG1sbnM9J2h0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnJz4KICA8ZmlsdGVyIGlkPSdub2lzZUZpbHRlcic+CiAgICA8ZmVUdXJidWxlbmNlIAogICAgICB0eXBlPSdmcmFjdGFsTm9pc2UnIAogICAgICBiYXNlRnJlcXVlbmN5PSc1JyAKICAgICAgbnVtT2N0YXZlcz0nNicgCiAgICAgIHN0aXRjaFRpbGVzPSdzdGl0Y2gnLz4KICA8L2ZpbHRlcj4KICAKICA8cmVjdCB3aWR0aD0nMTAwJScgaGVpZ2h0PScxMDAlJyBmaWx0ZXI9J3VybCgjbm9pc2VGaWx0ZXIpJy8+Cjwvc3ZnPg==');
+  opacity: 0.2;
+  inset: calc(var(--spacing) * 0);
+  position: fixed;
+  pointer-events: none;
 }
