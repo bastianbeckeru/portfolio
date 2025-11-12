@@ -7,12 +7,21 @@
  * 1 Year = 12 Months
  */
 
+import { CSSProperties, useState } from 'react';
 import { useIsMobile } from '@/hooks/use-mobile';
-import { calculateLifeStats, convertTime } from '@/lib/lifeCalculator';
 import { cn } from '@/lib/utils';
+import { calculateLifeStats } from '@/lib/lifeCalculator';
+import { Calendar } from '@/components/ui/calendar';
 import styles from '@/styles/calendar.module.css';
 import { motion } from 'motion/react';
-import { CSSProperties } from 'react';
+import { Label } from '@/components/ui/label';
+import { ChevronDownIcon } from 'lucide-react';
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '@/components/ui/popover';
+import { Button } from '@/components/ui/button';
 
 export const phases = [
   { name: 'Childhood', start: 1, end: 12, color: 'var(--color-orange-400)' },
@@ -51,13 +60,16 @@ export const MONTHS_PER_YEAR = 12;
 export default function LifeCalendarPage() {
   const isMobile = useIsMobile();
 
-  const birthDate = new Date('2001-09-09');
+  const [open, setOpen] = useState<boolean>(false);
+  const [birthDate, setBirthDate] = useState<Date | undefined>(
+    new Date(2001, 8, 9)
+  );
   const lifeExpectancy = 100;
   const mode: 'weeks' | 'months' = isMobile ? 'months' : 'weeks';
   const multiplier = isMobile ? MONTHS_PER_YEAR : WEEKS_PER_YEAR;
 
   const { lived } = calculateLifeStats({
-    birthDate: birthDate,
+    birthDate: birthDate ?? new Date(2001, 8, 9),
     lifeExpectancy: lifeExpectancy,
     timeUnit: mode,
   });
@@ -81,12 +93,53 @@ export default function LifeCalendarPage() {
   return (
     <div className='flex mb-16 w-dvw min-h-dvh flex-col items-center justify-center'>
       <div className='p-6 text-center'>
-        <h2 className='font-bold text-4xl tracking-wide uppercase text-center'>
+        <h2 className='font-bold text-balance text-4xl mb-2 tracking-wide uppercase'>
           Calendar of your life
         </h2>
+        <p className='font-semibold text-balance text-xs uppercase tracking-wide'>
+          Time is limited and precious. How do you want to spend it?
+        </p>
+      </div>
+      <div>
+        <div className='flex flex-col gap-3'>
+          <Label htmlFor='date' className='px-1 sr-only'>
+            Date of birth
+          </Label>
+          <Popover open={open} onOpenChange={setOpen}>
+            <PopoverTrigger asChild>
+              <Button
+                variant='outline'
+                id='date'
+                className='w-48 justify-between font-normal'
+              >
+                {birthDate
+                  ? birthDate.toLocaleDateString('es-CL')
+                  : 'Selecciona una fecha'}
+                <ChevronDownIcon />
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent className='w-48 overflow-hidden p-0' align='start'>
+              <Calendar
+                mode='single'
+                selected={birthDate}
+                captionLayout='dropdown'
+                onSelect={(date) => {
+                  setBirthDate(date);
+                  setOpen(false);
+                }}
+              />
+            </PopoverContent>
+          </Popover>
+        </div>
       </div>
 
+      <div className='hidden'>
+        <span className='uppercase'>Weeks of your life</span>
+      </div>
       <div className='flex flex-row gap-2 p-6'>
+        <div className='hidden'>
+          <span className='uppercase'>Years of your life</span>
+        </div>
         <div className={cn('text-right', styles.calendarLeft)}>
           {Array.from({
             length: lifeExpectancy,
@@ -156,6 +209,9 @@ export default function LifeCalendarPage() {
               </p>
             </div>
           ))}
+        </div>
+        <div className='hidden'>
+          <span className='uppercase'>Stages of your life</span>
         </div>
       </div>
     </div>
