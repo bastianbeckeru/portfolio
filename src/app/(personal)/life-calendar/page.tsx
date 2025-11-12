@@ -48,7 +48,7 @@ export const GRID_GAP = 0.0625; // rem
 export const WEEKS_PER_YEAR = 52;
 export const MONTHS_PER_YEAR = 12;
 
-export default function LifeTimePage() {
+export default function LifeCalendarPage() {
   const isMobile = useIsMobile();
 
   const birthDate = new Date('2001-09-09');
