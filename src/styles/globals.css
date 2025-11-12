@@ -148,3 +148,7 @@ a {
   position: fixed;
   pointer-events: none;
 }
+
+.vertical {
+  writing-mode: vertical-rl;
+}

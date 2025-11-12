@@ -1,0 +1,18 @@
+.calendar {
+  display: grid;
+  grid-auto-rows: 1rem;
+  gap: 1px;
+}
+
+.calendarLeft {
+  display: grid;
+  grid-template-columns: repeat(1, 2rem);
+  grid-template-rows: repeat(100, 1rem);
+  gap: 1px;
+}
+
+.calendarRight {
+  display: flex;
+  flex-direction: column;
+  width: 2rem;
+}
