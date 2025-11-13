@@ -118,7 +118,10 @@ export default function LifeCalendarPage() {
                 <ChevronDownIcon />
               </Button>
             </PopoverTrigger>
-            <PopoverContent className='w-64 overflow-hidden p-0' align='start'>
+            <PopoverContent
+              className='w-auto min-w-64 h-auto min-h-64 overflow-hidden p-0'
+              align='start'
+            >
               <Calendar
                 mode='single'
                 selected={birthDate}
