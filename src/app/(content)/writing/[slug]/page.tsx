@@ -18,7 +18,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
   const publicationDate = formatDate(metadata.publishedAt);
 
   return (
-    <article className='mx-auto md:max-w-3xl pt-8 font-serif'>
+    <article className='mx-auto md:max-w-3xl md:pt-8 font-serif'>
       <AspectRatio ratio={16 / 9} className='md:rounded-md overflow-hidden'>
         <Image
           src={metadata.image}

@@ -37,7 +37,7 @@ export const BirthDateSelector = memo(function BirthDateSelector() {
           <Button
             id='birth-date'
             variant='outline'
-            className='w-32 justify-between font-normal'
+            className='w-36 justify-between font-normal'
             aria-label='Seleccionar fecha de nacimiento'
           >
             <span className='truncate'>{formattedDate}</span>

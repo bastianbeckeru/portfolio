@@ -37,7 +37,7 @@ export default function ArticleCard({
 
       <Link
         href={`/writing/${slugify(title)}`}
-        className='py-6 gap-2 flex-col px-8 justify-end size-full items-center  text-shadow flex'
+        className='py-6 gap-2 flex-col px-8 justify-end size-full items-center text-shadow flex font-serif'
       >
         <p className='font-bold text-xs text-inherit uppercase'>{category}</p>
         <h2 className='font-medium text-left text-xl md:text-2xl text-pretty'>
