@@ -16,6 +16,7 @@ import { useUserStore } from '@/store/user-store';
 export const BirthDateSelector = memo(function BirthDateSelector() {
   const [open, setOpen] = useState(false);
   const { birthDate, setBirthDate } = useUserStore();
+  const birthDateObj = birthDate ? new Date(birthDate) : undefined;
 
   const handleDateSelect = (date: Date | undefined) => {
     if (!date) return;
@@ -23,8 +24,8 @@ export const BirthDateSelector = memo(function BirthDateSelector() {
     setOpen(false);
   };
 
-  const formattedDate = birthDate
-    ? birthDate.toLocaleDateString('es-CL')
+  const formattedDate = birthDateObj
+    ? birthDateObj.toLocaleDateString('es-CL')
     : 'Selecciona tu fecha de nacimiento';
 
   return (
@@ -50,11 +51,11 @@ export const BirthDateSelector = memo(function BirthDateSelector() {
         >
           <Calendar
             mode='single'
-            selected={birthDate}
+            selected={birthDateObj}
             onSelect={handleDateSelect}
             captionLayout='dropdown'
             className='size-full'
-            defaultMonth={birthDate || new Date(2001, 8, 9)}
+            defaultMonth={birthDateObj || new Date(2001, 8, 9)}
           />
         </PopoverContent>
       </Popover>
