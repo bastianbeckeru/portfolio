@@ -118,11 +118,12 @@ export default function LifeCalendarPage() {
                 <ChevronDownIcon />
               </Button>
             </PopoverTrigger>
-            <PopoverContent className='w-48 overflow-hidden p-0' align='start'>
+            <PopoverContent className='w-64 overflow-hidden p-0' align='start'>
               <Calendar
                 mode='single'
                 selected={birthDate}
                 captionLayout='dropdown'
+                className='size-full'
                 onSelect={(date) => {
                   setBirthDate(date);
                   setOpen(false);
