@@ -1,7 +1,8 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
-const initialState = { birthDate: new Date(2001, 8, 9) };
+// JSON only store string dates.
+const initialState = { birthDate: new Date(2001, 8, 9).toISOString() };
 
 type UserState = typeof initialState & {
   setBirthDate: (date: Date) => void;
@@ -11,7 +12,7 @@ type UserState = typeof initialState & {
 export const useUserStore = create<UserState>()(
   persist(
     (set) => ({
-      setBirthDate: (date: Date) => set({ birthDate: date }),
+      setBirthDate: (date: Date) => set({ birthDate: date.toISOString() }),
       reset: () => set(initialState),
       ...initialState,
     }),

@@ -12,14 +12,15 @@ const LIFE_EXPECTANCY = 100;
 
 export default function LifeCalendar() {
   const isMobile = useIsMobile();
-  const { birthDate } = useUserStore();
+  const { birthDate } = useUserStore(); // get birthDate as ISO string
+  const birthDateObj = new Date(birthDate);
 
   const mode = isMobile ? 'months' : 'weeks';
 
   const lifeStats = useMemo(
     () =>
       calculateLifeStats({
-        birthDate,
+        birthDate: birthDateObj,
         lifeExpectancy: LIFE_EXPECTANCY,
         timeUnit: mode,
       }),

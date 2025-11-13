@@ -16,10 +16,6 @@ type TimeUnit =
   | 'months'
   | 'years';
 
-type TimeUnits = {
-  miliseconds: 1000;
-};
-
 export function calculateLifeStats({
   birthDate,
   lifeExpectancy = 100,
