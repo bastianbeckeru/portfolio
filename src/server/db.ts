@@ -7,6 +7,7 @@ export const projects = [
     tech: ['NextJS', 'TypeScript', 'TailwindCSS'],
     github: '#',
     live: 'fedep.cl',
+    category: 'SITE',
   },
   {
     title: 'MiMalla',
@@ -16,6 +17,7 @@ export const projects = [
     tech: ['NextJS', 'TypeScript', 'TailwindCSS'],
     github: '#',
     live: 'mimalla.vercel.app',
+    category: 'APP',
   },
   {
     title: 'Calendar of Your Life',
@@ -25,6 +27,7 @@ export const projects = [
     tech: ['React', 'TypeScript'],
     github: '#',
     live: '/lab/life-calendar',
+    category: 'LAB',
   },
   {
     title: 'Instagram Followers Tool',
@@ -34,6 +37,7 @@ export const projects = [
     tech: ['React', 'TypeScript'],
     github: '#',
     live: '/lab/instagram',
+    category: 'LAB',
   },
 ];
 

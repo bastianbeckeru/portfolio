@@ -90,9 +90,7 @@ const PhaseLabels = memo(() => (
         key={p.name}
         className='flex items-center'
         style={{
-          height: `${
-            (GRID_SIZE + GRID_GAP) * (p.end - p.start) + GRID_SIZE
-          }rem`,
+          height: `${(GRID_SIZE + GRID_GAP) * (p.end - p.start + 1)}rem`,
         }}
       >
         <p
