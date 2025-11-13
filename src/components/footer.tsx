@@ -20,13 +20,6 @@ export default function Footer() {
 
         <div className='flex gap-4 mt-2'>
           <a
-            href='https://www.instagram.com/bastianbeckeru'
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            Instagram
-          </a>
-          <a
             href='https://www.linkedin.com/in/bastianbeckeru'
             target='_blank'
             rel='noopener noreferrer'

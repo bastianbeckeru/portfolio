@@ -3,7 +3,8 @@ import Link from 'next/link';
 import { Card, CardContent } from './ui/card';
 import { ExternalLink, Github } from 'lucide-react';
 import { AspectRatio } from './ui/aspect-ratio';
-import { formatDate, slugify } from '@/utils/strings';
+import { slugify } from '@/utils/strings';
+import { formatDate } from '@/utils/dateHelper';
 
 type ArticleCardProps = {
   title: string;
@@ -35,12 +36,10 @@ export default function ArticleCard({
       />
 
       <Link
-        href={`/article/${slugify(title)}`}
+        href={`/writing/${slugify(title)}`}
         className='py-6 gap-2 flex-col px-8 justify-end size-full items-center  text-shadow flex'
       >
-        <p className='font-bold text-xs text-inherit'>
-          {category.toUpperCase()}
-        </p>
+        <p className='font-bold text-xs text-inherit uppercase'>{category}</p>
         <h2 className='font-medium text-left text-xl md:text-2xl text-pretty'>
           {title}
         </h2>

@@ -1,13 +1,13 @@
-import { Github, Linkedin, Download, Instagram } from 'lucide-react';
-import { Button, buttonVariants } from '@/components/ui/button';
+import { Github, Linkedin } from 'lucide-react';
+import { buttonVariants } from '@/components/ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import Footer from '@/components/footer';
 import { cn } from '@/lib/utils';
 import ExperienceCard from '@/components/experience-card';
 import ProjectCard from '@/components/project-card';
-import { articles, experiences, projects } from '@/server/db';
+import { experiences, projects } from '@/server/db';
 import ArticleCard from '@/components/article-card';
 import DownloadButton from '@/components/download-button';
+import { allItems as articles } from '@/utils/content';
 
 export default function Home() {
   return (
@@ -26,22 +26,11 @@ export default function Home() {
             Bastián Becker Urzúa
           </h1>
           <p className='text-lg leading-relaxed flex-1 md:text-balance'>
-            Estudiante de Ingeniería y amante del diseño, con interés de aportar
-            a la sociedad desde la tecnología y la organización.
+            Estudiante de Ingeniería creando productos digitales que combinan
+            buen diseño con código de calidad.
           </p>
 
           <div className='flex gap-4 flex-row items-center justify-center md:justify-start mt-2 md:mt-0'>
-            <a
-              href='https://www.instagram.com/bastianbeckeru/'
-              target='_blank'
-              rel='noopener noreferrer'
-              className={cn(
-                buttonVariants({ variant: 'ghost', size: 'icon' }),
-                '[&_svg]:size-6 hidden [&_svg]:text-rose-500 bg-rose-500/10'
-              )}
-            >
-              <Instagram />
-            </a>
             <a
               href='https://www.linkedin.com/in/bastianbeckeru/'
               target='_blank'
@@ -75,19 +64,19 @@ export default function Home() {
         </div>
       </section>
 
-      <div className='h-px w-full bg-foreground/10 my-16'></div>
+      <div className='h-px w-full bg-foreground/5 my-16'></div>
 
       {/* Thoughts Section 💭✍️ */}
       <section id='thoughts' className='flex flex-col gap-4'>
         <h2 className='text-3xl font-medium'>Pensamientos</h2>
         <div className='grid grid-cols-1 md:grid-cols-2 gap-8'>
           {articles.map((article, index) => (
-            <ArticleCard key={index} {...article} />
+            <ArticleCard key={index} {...article.metadata} />
           ))}
         </div>
       </section>
 
-      <div className='h-px w-full bg-foreground/10 my-16'></div>
+      <div className='h-px w-full bg-foreground/5 my-16'></div>
 
       {/* Experience Section 💼 */}
       <section id='experience' className='flex flex-col gap-4'>
@@ -99,7 +88,7 @@ export default function Home() {
         </ol>
       </section>
 
-      <div className='h-px w-full bg-foreground/10 my-16'></div>
+      <div className='h-px w-full bg-foreground/5 my-16'></div>
 
       {/* Projects Section 🧪 */}
       <section id='projects' className='flex flex-col gap-4'>

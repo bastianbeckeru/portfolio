@@ -4,7 +4,7 @@ export const projects = [
     description:
       'Sitio web oficial de la Federación de Estudiantes de la Universidad Diego Portales.',
     image: '/placeholder.svg',
-    tech: ['Next.js', 'TypeScript', 'Tailwind CSS'],
+    tech: ['NextJS', 'TypeScript', 'TailwindCSS'],
     github: '#',
     live: 'fedep.cl',
   },
@@ -13,9 +13,18 @@ export const projects = [
     description:
       'Plataforma de gestión de mallas curriculares para estudiantes universitarios.',
     image: '/placeholder.svg',
-    tech: ['Next.js', 'TypeScript', 'Tailwind CSS'],
+    tech: ['NextJS', 'TypeScript', 'TailwindCSS'],
     github: '#',
     live: 'mimalla.vercel.app',
+  },
+  {
+    title: 'Calendar of Your Life',
+    description:
+      'Una visualización inspirada en Kurzgesagt que muestra las semanas y meses de tu vida.',
+    image: '/placeholder.svg',
+    tech: ['React', 'TypeScript'],
+    github: '#',
+    live: '/lab/life-calendar',
   },
   {
     title: 'Instagram Followers Tool',
@@ -24,7 +33,7 @@ export const projects = [
     image: '/placeholder.svg',
     tech: ['React', 'TypeScript'],
     github: '#',
-    live: '/tools/instagram',
+    live: '/lab/instagram',
   },
 ];
 

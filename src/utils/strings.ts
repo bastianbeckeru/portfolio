@@ -14,7 +14,7 @@ export function slugify(...strings: string[]): string {
       .toLowerCase()
       .normalize('NFD') // Normalizar caracteres Unicode
       .replace(/[\u0300-\u036f]/g, '') // Eliminar marcas diacríticas (tildes, acentos)
-      .replace(/[^\w\s-]/g, '') // Elimina todo lo que no sea letra, número, guion o espacio
+      .replace(/[^\w\s-]/g, '') // elimina todo lo que no sea letra, número, guion o espacio
       .trim() // Eliminar espacios al inicio y final
       .replace(/\s+/g, '-'); // Reemplazar espacios con guiones
 
@@ -22,21 +22,4 @@ export function slugify(...strings: string[]): string {
   });
 
   return slugs.join('/');
-}
-
-export function formatDate(dateStr: string): string {
-  const [year, month, day] = dateStr.split('-').map(Number);
-  const date = new Date(year, month - 1, day);
-
-  const parts = new Intl.DateTimeFormat('es-CL', {
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric',
-  }).formatToParts(date);
-
-  const sDay = parts.find((p) => p.type === 'day')?.value;
-  const sMonth = parts.find((p) => p.type === 'month')?.value;
-  const sYear = parts.find((p) => p.type === 'year')?.value;
-
-  return `${sDay} de ${sMonth} ${sYear}`;
 }
