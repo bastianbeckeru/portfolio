@@ -119,7 +119,7 @@ export default function LifeCalendarPage() {
               </Button>
             </PopoverTrigger>
             <PopoverContent
-              className='w-auto min-w-64 h-auto min-h-72 overflow-hidden p-0'
+              className='w-auto min-w-64 h-auto min-h-80 overflow-hidden p-0'
               align='start'
             >
               <Calendar
