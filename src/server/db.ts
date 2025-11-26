@@ -1,5 +1,5 @@
 export const projects = [
-  {
+  /*   {
     title: 'FEDEP',
     description:
       'Sitio web oficial de la Federación de Estudiantes de la Universidad Diego Portales.',
@@ -8,7 +8,7 @@ export const projects = [
     github: '#',
     live: 'fedep.cl',
     category: 'SITE',
-  },
+  }, */
   {
     title: 'MiMalla',
     description:
