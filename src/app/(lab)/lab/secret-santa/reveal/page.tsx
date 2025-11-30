@@ -41,7 +41,15 @@ export default async function RevealPage({
                         </div>
                         <h1 className="text-2xl font-bold mb-2">Ya visto</h1>
                         <p className="">
-                            Esta asignación ya fue revelada el {result.viewedAt?.toLocaleString()}.
+                            Esta asignación ya fue revelada el {result.viewedAt?.toLocaleString('es-CL', {
+                                timeZone: 'America/Santiago',
+                                day: '2-digit',
+                                month: '2-digit',
+                                year: 'numeric',
+                                hour: '2-digit',
+                                minute: '2-digit',
+                                hour12: false
+                            })}.
                         </p>
                         <p className="text-xs text-muted-foreground text-left mt-4">
                             Por seguridad, el amigo secreto solo se muestra una vez.
