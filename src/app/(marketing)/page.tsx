@@ -26,8 +26,9 @@ export default function Home() {
             Bastián Becker Urzúa
           </h1>
           <p className='text-lg leading-relaxed flex-1 md:text-balance'>
-            Estudiante de Ingeniería creando productos digitales que combinan
-            buen diseño con código de calidad.
+            Licenciado en Ciencias de la Ingeniería con enfoque sistémico.
+            Desarrollo innovación a través del código y diseño funcional,
+            buscando soluciones que simplifiquen la vida.
           </p>
 
           <div className='flex gap-4 flex-row items-center justify-center md:justify-start mt-2 md:mt-0'>
@@ -102,19 +103,3 @@ export default function Home() {
     </main>
   );
 }
-
-/* 
-              <p className='text-gray-600 mb-6 leading-relaxed'>
-                I believe that technology should serve a purpose beyond just
-                functionality. It should enhance our lives, foster connections,
-                and empower individuals to achieve their goals. In my work, I
-                strive to create solutions that are not only effective but also
-                meaningful.
-              </p>
-              <p className='text-gray-600 leading-relaxed'>
-                Continuous learning is essential in this fast-paced industry. I
-                make it a priority to stay updated with the latest trends and
-                best practices, whether through online courses, workshops, or
-                collaboration with peers.
-              </p>
-*/
