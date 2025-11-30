@@ -58,12 +58,10 @@ export default function SecretSanta() {
     alert('Enlaces copiados al portapapeles');
   };
 
-
-
   return (
-    <div className="py-4">
+    <>
       {/* Participants Section */}
-      <div>
+      <main className="py-4">
         <h2 className="text-lg font-bold mb-4 text-foreground flex items-center gap-2">
           <Sparkles className="w-5 h-5 text-red-700" />
           Participantes
@@ -92,7 +90,7 @@ export default function SecretSanta() {
             </Card>
           ))}
         </div>
-      </div>
+      </main>
 
 
       {/*       <div className="fixed bottom-4 right-4">
@@ -137,6 +135,6 @@ export default function SecretSanta() {
           </div>
         </div>
       )} */}
-    </div>
+    </>
   );
 }

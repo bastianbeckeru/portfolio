@@ -1,54 +1,12 @@
 import { getAssignmentByUuid } from '@/app/actions/users';
+import { StatusCard } from '@/components/secret-santa/status-card';
+import { RevealSuccess } from '@/components/secret-santa/reveal-success';
+import { formatDateWithTime } from '@/utils/dateHelper';
+import { Suspense } from 'react';
 
-// Componente para los mensajes de error/estado
-function StatusCard({
-    title,
-    message,
-    icon,
-    iconBg,
-}: {
-    title: string;
-    message: string;
-    icon: string;
-    iconBg: string;
-}) {
-    return (
-        <div className="flex items-center justify-center p-4">
-            <div className="bg-background p-8 pb-12 rounded-2xl shadow-lg border max-w-md w-full text-center">
-                <div className={`w-16 h-16 ${iconBg} rounded-full flex items-center justify-center mx-auto mb-4`}>
-                    <span className="text-3xl">{icon}</span>
-                </div>
-                <h1 className={`text-2xl font-bold mb-3 ${title === 'Error' ? 'text-red-600' : ''}`}>
-                    {title}
-                </h1>
-                <p className="text-gray-600">{message}</p>
-            </div>
-        </div>
-    );
-}
-
-// Función auxiliar para formatear fecha
-function formatDate(date: Date): string {
-    return date.toLocaleString('es-CL', {
-        timeZone: 'America/Santiago',
-        day: '2-digit',
-        month: '2-digit',
-        year: 'numeric',
-        hour: '2-digit',
-        minute: '2-digit',
-        hour12: false
-    });
-}
-
-export default async function RevealPage({
-    searchParams,
-}: {
-    searchParams: Promise<{ key?: string }>;
-}) {
-    const { key } = await searchParams;
-
+async function RevealContent({ keyId }: { keyId?: string }) {
     // Validación temprana
-    if (!key) {
+    if (!keyId) {
         return (
             <StatusCard
                 title="Error"
@@ -60,7 +18,7 @@ export default async function RevealPage({
     }
 
     try {
-        const result = await getAssignmentByUuid(key);
+        const result = await getAssignmentByUuid(keyId);
 
         // Manejo de casos según status
         if (result.status === 'not_found') {
@@ -78,7 +36,7 @@ export default async function RevealPage({
             return (
                 <StatusCard
                     title="Ya visto"
-                    message={`Esta asignación ya fue revelada el ${formatDate(result.viewedAt!)}.`}
+                    message={`Esta asignación ya fue revelada el ${formatDateWithTime(result.viewedAt!)}.`}
                     icon="👀"
                     iconBg="bg-yellow-100"
                 />
@@ -86,35 +44,8 @@ export default async function RevealPage({
         }
 
         // Caso exitoso
-        const { assignment } = result;
+        return <RevealSuccess assignment={result.assignment} />;
 
-        return (
-            <main className="min-h-screen flex items-center justify-center p-4">
-                <div className="p-8 rounded-2xl shadow-lg border bg-background max-w-md w-full text-center">
-                    <div className="mb-6">
-                        <div className="size-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <span className="text-3xl">🎁</span>
-                        </div>
-                        <h1 className="text-2xl font-bold mb-2">
-                            Hola, {assignment.giverName}!
-                        </h1>
-                        <p className="text-muted-foreground">
-                            Tu amigo secreto para este {assignment.year} es...
-                        </p>
-                    </div>
-
-                    <div className="py-8 bg-green-50 rounded-xl border border-green-100 animate-in fade-in zoom-in duration-700">
-                        <p className="text-3xl font-bold text-green-700">
-                            {assignment.receiverName}
-                        </p>
-                    </div>
-
-                    <p className="mt-2 text-xs text-left text-red-500">
-                        ⚠️ Esta pantalla solo se mostrará una vez. ¡No lo olvides!
-                    </p>
-                </div>
-            </main>
-        );
     } catch (error) {
         console.error('Error al obtener asignación:', error);
         return (
@@ -126,4 +57,25 @@ export default async function RevealPage({
             />
         );
     }
+}
+
+export default async function RevealPage({
+    searchParams,
+}: {
+    searchParams: Promise<{ key?: string }>;
+}) {
+    const { key } = await searchParams;
+
+    return (
+        <Suspense fallback={
+            <div className="min-h-screen flex items-center justify-center p-4">
+                <div className="text-center">
+                    <div className="animate-spin text-4xl mb-4">🎁</div>
+                    <p className="text-muted-foreground">Cargando...</p>
+                </div>
+            </div>
+        }>
+            <RevealContent keyId={key} />
+        </Suspense>
+    );
 }
