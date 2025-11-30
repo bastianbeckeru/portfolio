@@ -165,6 +165,16 @@ export const projects = [
     live: '/lab/instagram',
     category: 'LAB',
   },
+  {
+    title: 'Secret Santa',
+    description:
+      'App sencilla para organizar sorteos secretos.',
+    image: '/placeholder.svg',
+    tech: ['React', 'TypeScript'],
+    github: '#',
+    live: '/lab/secret-santa',
+    category: 'LAB',
+  },
 ];
 
 export const experiences = [
