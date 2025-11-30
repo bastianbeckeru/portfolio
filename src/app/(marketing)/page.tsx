@@ -4,7 +4,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { cn } from '@/lib/utils';
 import ExperienceCard from '@/components/experience-card';
 import ProjectCard from '@/components/project-card';
-import { experiences, projects } from '@/server/db';
+import { experiences, projects } from '@/server/local-db';
 import ArticleCard from '@/components/article-card';
 import DownloadButton from '@/components/download-button';
 import { allItems as articles } from '@/utils/content';
