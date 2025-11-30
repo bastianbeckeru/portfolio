@@ -25,10 +25,9 @@ export default function Home() {
           <h1 className='text-2xl lg:text-4xl leading-tight font-bold'>
             Bastián Becker Urzúa
           </h1>
-          <p className='text-lg leading-relaxed flex-1 md:text-balance'>
-            Licenciado en Ciencias de la Ingeniería con enfoque sistémico.
-            Desarrollo innovación a través del código y diseño funcional,
-            buscando soluciones que simplifiquen la vida.
+          <p className='leading-relaxed flex-1 md:text-balance'>
+            Licenciado en Ciencias de la Ingeniería. Me mueve la innovación, el
+            impacto social y la belleza de lo simple.
           </p>
 
           <div className='flex gap-4 flex-row items-center justify-center md:justify-start mt-2 md:mt-0'>
