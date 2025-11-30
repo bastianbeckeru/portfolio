@@ -1,5 +1,52 @@
 import { getAssignmentByUuid } from '@/app/actions/users';
 
+// Componente para los mensajes de error/estado
+function StatusCard({
+    title,
+    message,
+    icon,
+    iconBg,
+    footer
+}: {
+    title: string;
+    message: string;
+    icon: string;
+    iconBg: string;
+    footer?: string;
+}) {
+    return (
+        <div className="min-h-screen flex items-center justify-center p-4">
+            <div className="bg-background p-8 rounded-2xl shadow-lg border max-w-md w-full text-center">
+                <div className={`w-16 h-16 ${iconBg} rounded-full flex items-center justify-center mx-auto mb-4`}>
+                    <span className="text-3xl">{icon}</span>
+                </div>
+                <h1 className={`text-2xl font-bold mb-2 ${title === 'Error' ? 'text-red-600' : ''}`}>
+                    {title}
+                </h1>
+                <p className="text-gray-600">{message}</p>
+                {footer && (
+                    <p className="text-xs text-muted-foreground text-left mt-4">
+                        {footer}
+                    </p>
+                )}
+            </div>
+        </div>
+    );
+}
+
+// Función auxiliar para formatear fecha
+function formatDate(date: Date): string {
+    return date.toLocaleString('es-CL', {
+        timeZone: 'America/Santiago',
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false
+    });
+}
+
 export default async function RevealPage({
     searchParams,
 }: {
@@ -7,58 +54,46 @@ export default async function RevealPage({
 }) {
     const { key } = await searchParams;
 
+    // Validación temprana
     if (!key) {
         return (
-            <div className="min-h-screen flex items-center justify-center p-4">
-                <div className="bg-background p-8 rounded-2xl shadow-lg border max-w-md w-full text-center">
-                    <h1 className="text-2xl font-bold text-red-600 mb-2">Error</h1>
-                    <p className="text-gray-600">No se proporcionó un ID de asignación válido.</p>
-                </div>
-            </div>
+            <StatusCard
+                title="Error"
+                message="No se proporcionó un ID de asignación válido."
+                icon="❌"
+                iconBg="bg-red-100"
+            />
         );
     }
 
     try {
         const result = await getAssignmentByUuid(key);
 
+        // Manejo de casos según status
         if (result.status === 'not_found') {
             return (
-                <div className="min-h-screen flex items-center justify-center p-4">
-                    <div className="bg-background p-8 rounded-2xl shadow-lg border max-w-md w-full text-center">
-                        <h1 className="text-2xl font-bold text-red-600 mb-2">Error</h1>
-                        <p className="text-gray-600">Asignación no encontrada.</p>
-                    </div>
-                </div>
+                <StatusCard
+                    title="Error"
+                    message="Asignación no encontrada."
+                    icon="🔍"
+                    iconBg="bg-red-100"
+                />
             );
         }
 
         if (result.status === 'already_viewed') {
             return (
-                <div className="min-h-screen flex items-center justify-center p-4">
-                    <div className="bg-background p-8 rounded-2xl shadow-lg border max-w-md w-full text-center">
-                        <div className="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <span className="text-3xl">👀</span>
-                        </div>
-                        <h1 className="text-2xl font-bold mb-2">Ya visto</h1>
-                        <p className="">
-                            Esta asignación ya fue revelada el {result.viewedAt?.toLocaleString('es-CL', {
-                                timeZone: 'America/Santiago',
-                                day: '2-digit',
-                                month: '2-digit',
-                                year: 'numeric',
-                                hour: '2-digit',
-                                minute: '2-digit',
-                                hour12: false
-                            })}.
-                        </p>
-                        <p className="text-xs text-muted-foreground text-left mt-4">
-                            Por seguridad, el amigo secreto solo se muestra una vez.
-                        </p>
-                    </div>
-                </div>
+                <StatusCard
+                    title="Ya visto"
+                    message={`Esta asignación ya fue revelada el ${formatDate(result.viewedAt!)}.`}
+                    icon="👀"
+                    iconBg="bg-yellow-100"
+                    footer="Por seguridad, el amigo secreto solo se muestra una vez."
+                />
             );
         }
 
+        // Caso exitoso
         const { assignment } = result;
 
         return (
@@ -71,11 +106,15 @@ export default async function RevealPage({
                         <h1 className="text-2xl font-bold mb-2">
                             Hola, {assignment.giverName}!
                         </h1>
-                        <p className="text-muted-foreground">Tu amigo secreto para este {assignment.year} es...</p>
+                        <p className="text-muted-foreground">
+                            Tu amigo secreto para este {assignment.year} es...
+                        </p>
                     </div>
 
                     <div className="py-8 bg-green-50 rounded-xl border border-green-100 animate-in fade-in zoom-in duration-700">
-                        <p className="text-3xl font-bold text-green-700">{assignment.receiverName}</p>
+                        <p className="text-3xl font-bold text-green-700">
+                            {assignment.receiverName}
+                        </p>
                     </div>
 
                     <p className="mt-2 text-xs text-left text-red-400">
@@ -85,13 +124,14 @@ export default async function RevealPage({
             </main>
         );
     } catch (error) {
+        console.error('Error al obtener asignación:', error);
         return (
-            <div className="min-h-screen flex items-center justify-center p-4">
-                <div className="bg-background p-8 rounded-2xl shadow-lg border max-w-md w-full text-center">
-                    <h1 className="text-2xl font-bold text-red-600 mb-2">Error</h1>
-                    <p className="text-gray-600">Error del sistema.</p>
-                </div>
-            </div>
+            <StatusCard
+                title="Error"
+                message="Error del sistema. Por favor, intenta nuevamente."
+                icon="⚠️"
+                iconBg="bg-red-100"
+            />
         );
     }
 }
