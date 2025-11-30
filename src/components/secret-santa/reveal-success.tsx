@@ -105,9 +105,9 @@ export function RevealSuccess({
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 transition={{ delay: 1.5 }}
-                                className="mt-4 text-xs text-left text-red-500"
+                                className="mt-4 text-sm text-left text-red-500"
                             >
-                                ⚠️ Esta pantalla solo se mostrará una vez. ¡No lo olvides!
+                                ⚠️ Solo se mostrará una vez. ¡Sácale pantallazo!
                             </motion.p>
                         </motion.div>
                     )}
