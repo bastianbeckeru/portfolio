@@ -1,6 +1,6 @@
-import { Content as Metadata } from '@/types/content';
-import fs from 'fs';
-import path from 'path';
+import type { Content as Metadata } from '@/types/content';
+import fs from 'node:fs';
+import path from 'node:path';
 
 export const allItems = getArticles();
 
@@ -54,7 +54,7 @@ function parseFrontmatter(fileContent: string) {
   }
 
   const frontMatterBlock = match![1];
-  const frontMatterLines = frontMatterBlock.trim().split('\n');
+  const frontMatterLines = frontMatterBlock!.trim().split('\n');
   const content = fileContent.replace(frontmatterRegex, '').trim();
 
   const metadata: Partial<Metadata> = {};
@@ -65,7 +65,7 @@ function parseFrontmatter(fileContent: string) {
 
     if (trimmedLine.includes(':')) {
       const [keyPart, ...valueParts] = trimmedLine.split(':');
-      const key = keyPart.trim() as keyof Metadata;
+      const key = keyPart!.trim() as keyof Metadata;
       const value = valueParts
         .join(':')
         .trim()
@@ -82,7 +82,7 @@ function parseFrontmatter(fileContent: string) {
       const authorMatch = trimmedLine.match(/- '(.*)'/);
 
       if (authorMatch && metadata.authors) {
-        metadata.authors.push(authorMatch[1]);
+        metadata.authors.push(authorMatch[1]!);
       }
     }
   }
@@ -110,107 +110,4 @@ export function getReadTime({
   const readTime = Math.ceil(minutes);
 
   return readTime;
-}
-
-type Content = {
-  metadata: {
-    authors: string;
-    slug: string;
-    readTime: number;
-    title: string;
-    description: string;
-    image: string;
-    publishedAt: string;
-  };
-  content: string;
-};
-
-type GetLatestContentProps = {
-  content?: Content[];
-  limit?: number;
-};
-
-export function getLatestContent({
-  content,
-  limit = 3,
-}: GetLatestContentProps) {
-  let items = content;
-
-  if (!items) {
-    items = getArticles();
-  }
-
-  const sortedItems = sortByPublishedDate(items);
-
-  return sortedItems.slice(0, limit);
-}
-
-function sortByPublishedDate(items: Content[]) {
-  return items.sort((a, b) => {
-    return (
-      new Date(b.metadata.publishedAt).getTime() -
-      new Date(a.metadata.publishedAt).getTime()
-    );
-  });
-}
-
-type GetMostViewedContentProps = {
-  content?: Content[];
-  slugs?: string[];
-  limit?: number;
-};
-
-export function getMostViewedContent({
-  content,
-  slugs,
-  limit = 3,
-}: GetMostViewedContentProps) {
-  let items = content;
-
-  if (!items) {
-    items = getArticles();
-  }
-
-  let sortedItems: Content[] = [];
-
-  if (slugs && slugs.length > 0) {
-    sortedItems = items.filter((item) => slugs.includes(item.metadata.slug));
-  } else {
-    // Redis Call
-    // sortedItems = await getMostViewedItems(); // slugs
-    // sortedItems = items.sort((a, b) => b.views - a.views);
-    // Slice limit
-    // find items with slugs
-  }
-
-  return sortedItems.slice(0, limit);
-}
-
-export function getArticlesBySlugs(slugs: string[]) {
-  const articles: Content[] = [];
-
-  for (const slug of slugs) {
-    const newArticle = getArticle(slug);
-    articles.push(...newArticle);
-  }
-
-  return articles;
-}
-
-export function getLatestNews({ slugs, limit = 3 }: GetMostViewedContentProps) {
-  const items = slugs ? getArticlesBySlugs(slugs) : getArticles();
-
-  let sortedItems: Content[] = [];
-
-  if (slugs && slugs.length > 0) {
-    sortedItems = items.filter((item) => slugs.includes(item.metadata.slug));
-  } else {
-    // Redis Call
-    // sortedItems = await getMostViewedItems(); // slugs
-    // sortedItems = items.sort((a, b) => b.views - a.views);
-    // Slice limit
-    // find items with slugs
-  }
-
-  return sortedItems.slice(0, limit);
 }
