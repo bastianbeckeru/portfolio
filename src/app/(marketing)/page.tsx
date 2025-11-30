@@ -11,7 +11,7 @@ import { allItems as articles } from '@/utils/content';
 
 export default function Home() {
   return (
-    <main className='min-h-screen max-w-3xl mx-auto px-6 lg:px-8 py-16'>
+    <main className='min-h-screen max-w-3xl mx-auto px-6 lg:px-8 py-10 lg:py-16'>
       {/* Hero Section */}
       <section className='gap-6 md:gap-8 flex flex-col h-auto md:h-40 md:flex-row items-center justify-center'>
         <div className='size-40 shrink-0'>
@@ -30,7 +30,7 @@ export default function Home() {
             impacto social y la belleza de lo simple.
           </p>
 
-          <div className='flex gap-4 flex-row items-center justify-center md:justify-start mt-2 md:mt-0'>
+          <div className='flex gap-4 flex-row items-center justify-start mt-2 md:mt-0'>
             <a
               href='https://www.linkedin.com/in/bastianbeckeru/'
               target='_blank'
@@ -68,7 +68,9 @@ export default function Home() {
 
       {/* Thoughts Section 💭✍️ */}
       <section id='thoughts' className='flex flex-col gap-4'>
-        <h2 className='text-3xl font-medium'>Pensamientos</h2>
+        <h2 className='text-2xl font-bold tracking-tight uppercase'>
+          Pensamientos
+        </h2>
         <div className='grid grid-cols-1 md:grid-cols-2 gap-8'>
           {articles.map((article, index) => (
             <ArticleCard key={index} {...article.metadata} />
@@ -80,7 +82,9 @@ export default function Home() {
 
       {/* Experience Section 💼 */}
       <section id='experience' className='flex flex-col gap-4'>
-        <h2 className='text-3xl font-medium'>Experiencias</h2>
+        <h2 className='text-2xl tracking-tight uppercase font-bold'>
+          Experiencias
+        </h2>
         <ol className='flex flex-col gap-2'>
           {experiences.map((exp, index) => (
             <ExperienceCard key={index} {...exp} />
@@ -92,7 +96,9 @@ export default function Home() {
 
       {/* Projects Section 🧪 */}
       <section id='projects' className='flex flex-col gap-4'>
-        <h2 className='text-3xl font-medium'>Proyectos y Herramientas</h2>
+        <h2 className='text-2xl uppercase tracking-tight font-bold'>
+          Proyectos y Herramientas
+        </h2>
         <div className='grid md:grid-cols-2 gap-8'>
           {projects.map((project, index) => (
             <ProjectCard key={index} {...project} />

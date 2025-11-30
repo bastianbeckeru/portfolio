@@ -180,7 +180,7 @@ export const experiences = [
   {
     role: 'Vocero',
     organization: 'Confederación de Estudiantes de Chile',
-    location: 'Santiago, Chile',
+    location: 'Región Metropolitana, Chile',
     period: 'Abr 2025 – Presente',
     description:
       'Muevo la voz de los estudiantes que busca mejorar la vida estudiantil a través de la organización, la tecnología y el acceso a la información.',

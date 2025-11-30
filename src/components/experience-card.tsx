@@ -17,22 +17,20 @@ export default function ExperienceCard({
 }: ExperienceCardProps) {
   return (
     <div className='flex flex-col gap-2 p-4 border rounded-md'>
-      <h3 className='text-xl font-semibold text-foreground'>
+      <h3 className='font-semibold text-foreground'>
         {role} — {organization}
       </h3>
       <div className='flex flex-col md:flex-row gap-2 md:gap-4 text-muted-foreground'>
-        <div className='flex items-center gap-1'>
-          <MapPin className='size-4' />
-          <span className='text-sm'>{location}</span>
+        <div className='[&_svg]:size-3.5 text-xs flex items-center gap-1'>
+          <MapPin />
+          <span>{location}</span>
         </div>
-        <div className='flex items-center gap-1'>
-          <Calendar className='size-4' />
-          <span className='text-sm'>{period}</span>
+        <div className='[&_svg]:size-3.5 text-xs flex items-center gap-1'>
+          <Calendar />
+          <span>{period}</span>
         </div>
       </div>
       <div className='text-sm text-muted-foreground hidden'>{description}</div>
     </div>
   );
 }
-
-/* • */

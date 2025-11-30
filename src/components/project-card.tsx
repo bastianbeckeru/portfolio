@@ -22,7 +22,7 @@ export default function ProjectCard({
   live,
 }: ProjectCardProps) {
   return (
-    <Card className='group hover:scale-[101%] transition-all hover:shadow-lg p-0 duration-200 border-0 shadow-sm overflow-hidden'>
+    <Card className='group hover:scale-[101%] transition-all hover:shadow-lg p-0 duration-200 border-0 shadow-sm overflow-hidden rounded-md'>
       <CardContent className='p-0'>
         <Link href={live} className='block relative'>
           <div className='aspect-video overflow-hidden bg-gray-50'>
@@ -39,7 +39,7 @@ export default function ProjectCard({
 
         <div className='p-4 gap-1.5 flex flex-col'>
           <h3 className='text-lg font-semibold text-foreground'>{title}</h3>
-          <p className='text-muted-foreground min-h-12 text-xs leading-relaxed'>
+          <p className='text-muted-foreground min-h-14 text-sm leading-relaxed'>
             {description}
           </p>
           <div className='inline-flex justify-between gap-2'>
