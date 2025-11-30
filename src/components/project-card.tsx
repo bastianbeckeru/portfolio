@@ -1,14 +1,15 @@
 import Image from 'next/image';
-import { Card, CardContent } from './ui/card';
+import { Card, CardContent, CardFooter } from './ui/card';
 import Link from 'next/link';
 import { ExternalLink, Github } from 'lucide-react';
+import { Badge } from './ui/badge';
 
 type ProjectCardProps = {
   image: string;
   title: string;
   description: string;
   tech: string[];
-  github: string;
+  github: string | null;
   live: string;
 };
 
@@ -21,47 +22,44 @@ export default function ProjectCard({
   live,
 }: ProjectCardProps) {
   return (
-    <Card className='group hover:shadow-lg p-0 transition-shadow duration-300 border-0 shadow-sm'>
+    <Card className='group hover:scale-[101%] transition-all hover:shadow-lg p-0 duration-200 border-0 shadow-sm overflow-hidden'>
       <CardContent className='p-0'>
-        <div className='aspect-video overflow-hidden rounded-t-lg bg-gray-100'>
-          <Image
-            src={image || '/placeholder.svg'}
-            alt={title}
-            width={400}
-            height={300}
-            className='object-cover w-full h-full group-hover:scale-105 transition-transform duration-300'
-          />
-        </div>
-        <div className='p-6'>
-          <h3 className='text-xl font-semibold text-gray-900 mb-2'>{title}</h3>
-          <p className='text-gray-600 mb-4 text-sm leading-relaxed'>
+        <Link href={live} className='block relative'>
+          <div className='aspect-video overflow-hidden bg-gray-50'>
+            <Image
+              src={image || '/placeholder.svg'}
+              alt={title}
+              width={400}
+              height={200}
+              className='object-cover size-full'
+            />
+          </div>
+          <ExternalLink className='absolute size-4 bottom-4 right-4 text-foreground opacity-0 group-hover:opacity-100 transition-opacity duration-200' />
+        </Link>
+
+        <div className='p-4 gap-1.5 flex flex-col'>
+          <h3 className='text-lg font-semibold text-foreground'>{title}</h3>
+          <p className='text-muted-foreground min-h-12 text-xs leading-relaxed'>
             {description}
           </p>
-          <div className='flex flex-wrap gap-2 mb-4'>
-            {tech.map((t) => (
-              <span
-                key={t}
-                className='px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded'
+          <div className='inline-flex justify-between gap-2'>
+            <div className='flex flex-wrap gap-2'>
+              {tech.map((t) => (
+                <Badge key={t} variant='secondary' className='h-6 rounded-sm'>
+                  {t}
+                </Badge>
+              ))}
+            </div>
+            {github && (
+              <a
+                href={github}
+                target='_blank'
+                rel='noopener noreferrer'
+                className='flex [&_svg]:size-4 p-2 rounded-md items-center [&_svg]:text-muted-foreground hover:bg-muted transition-colors'
               >
-                {t}
-              </span>
-            ))}
-          </div>
-          <div className='flex gap-3'>
-            <Link
-              href={github}
-              className='flex items-center text-gray-600 hover:text-gray-900 transition-colors text-sm'
-            >
-              <Github className='size-4 mr-1' />
-              Code
-            </Link>
-            <Link
-              href={live}
-              className='flex items-center text-gray-600 hover:text-gray-900 transition-colors text-sm'
-            >
-              <ExternalLink className='size-4 mr-1' />
-              Live Demo
-            </Link>
+                <Github />
+              </a>
+            )}
           </div>
         </div>
       </CardContent>
