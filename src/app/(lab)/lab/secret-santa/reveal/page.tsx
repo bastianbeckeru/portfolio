@@ -6,29 +6,22 @@ function StatusCard({
     message,
     icon,
     iconBg,
-    footer
 }: {
     title: string;
     message: string;
     icon: string;
     iconBg: string;
-    footer?: string;
 }) {
     return (
-        <div className="min-h-screen flex items-center justify-center p-4">
-            <div className="bg-background p-8 rounded-2xl shadow-lg border max-w-md w-full text-center">
+        <div className="flex items-center justify-center p-4">
+            <div className="bg-background p-8 pb-12 rounded-2xl shadow-lg border max-w-md w-full text-center">
                 <div className={`w-16 h-16 ${iconBg} rounded-full flex items-center justify-center mx-auto mb-4`}>
                     <span className="text-3xl">{icon}</span>
                 </div>
-                <h1 className={`text-2xl font-bold mb-2 ${title === 'Error' ? 'text-red-600' : ''}`}>
+                <h1 className={`text-2xl font-bold mb-3 ${title === 'Error' ? 'text-red-600' : ''}`}>
                     {title}
                 </h1>
                 <p className="text-gray-600">{message}</p>
-                {footer && (
-                    <p className="text-xs text-muted-foreground text-left mt-4">
-                        {footer}
-                    </p>
-                )}
             </div>
         </div>
     );
@@ -88,7 +81,6 @@ export default async function RevealPage({
                     message={`Esta asignación ya fue revelada el ${formatDate(result.viewedAt!)}.`}
                     icon="👀"
                     iconBg="bg-yellow-100"
-                    footer="Por seguridad, el amigo secreto solo se muestra una vez."
                 />
             );
         }
@@ -117,7 +109,7 @@ export default async function RevealPage({
                         </p>
                     </div>
 
-                    <p className="mt-2 text-xs text-left text-red-400">
+                    <p className="mt-2 text-xs text-left text-red-500">
                         ⚠️ Esta pantalla solo se mostrará una vez. ¡No lo olvides!
                     </p>
                 </div>
@@ -128,7 +120,7 @@ export default async function RevealPage({
         return (
             <StatusCard
                 title="Error"
-                message="Error del sistema. Por favor, intenta nuevamente."
+                message="Error del sistema. Por favor, contacta al desarrollador."
                 icon="⚠️"
                 iconBg="bg-red-100"
             />

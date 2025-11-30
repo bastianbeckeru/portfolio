@@ -6,6 +6,8 @@ import {
   secretSanta,
   getAllUsers,
 } from '@/app/actions/users';
+import { Check, CircleCheck, CircleCheckBig, CircleDashed, CircleMinus, Sparkles } from 'lucide-react';
+import { Card } from '../ui/card';
 
 type DashboardUser = {
   id: string;
@@ -56,55 +58,38 @@ export default function SecretSanta() {
     alert('Enlaces copiados al portapapeles');
   };
 
-  const year = new Date().getFullYear();
+
 
   return (
-    <main className="min-h-screen bg-[#f8f9fa] text-slate-800 font-sans selection:bg-red-100">
-      {/* Hero Section */}
-      <div className="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
-        <div className="max-w-3xl mx-auto text-center relative z-10">
-          <h1 className="text-5xl md:text-7xl font-medium tracking-tight text-slate-900 mb-4">
-            Navidad <span className="font-serif text-red-600">{year}</span>
-          </h1>
-          <p className="text-lg text-slate-500 font-light">
-            La magia de regalar, simplificada.
-          </p>
-        </div>
-
-        {/* Decorative elements */}
-        <div className="absolute top-10 left-10 text-red-100 opacity-25 text-9xl select-none">❄</div>
-        <div className="absolute bottom-10 right-10 text-green-100 opacity-25 text-9xl select-none">❄</div>
-      </div>
-
-      {/* Participants List */}
-      <div className="max-w-2xl mx-auto px-4 py-12">
-        <div className="grid gap-4">
+    <div className="py-4">
+      {/* Participants Section */}
+      <div>
+        <h2 className="text-lg font-bold mb-4 text-foreground flex items-center gap-2">
+          <Sparkles className="w-5 h-5 text-red-700" />
+          Participantes
+        </h2>
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
           {users.map((user) => (
-            <div
+            <Card
               key={user.id}
-              className="group flex items-center justify-between p-4 bg-white rounded-xl shadow-sm border border-slate-100 hover:shadow-md transition-all duration-300"
+              className="p-2 border-border/50 hover:border-red-700/50 hover:bg-red-700/5 transition-all duration-200"
             >
-              <div className="flex items-center gap-4">
-                <div className={`w-2 h-2 rounded-full ${user.viewed ? 'bg-green-500' : user.assignmentId ? 'bg-amber-400' : 'bg-slate-200'}`} />
-                <span className="text-lg font-medium text-slate-700 group-hover:text-slate-900 transition-colors">
-                  {user.name}
-                </span>
+              <div className="flex items-center gap-2">
+                <div className="size-6 rounded-full bg-gradient-to-br from-red-700 to-green-700 flex items-center justify-center flex-shrink-0">
+                  <span className="text-xs font-bold text-white">{user.name.charAt(0)}</span>
+                </div>
+                <span className="text-xs font-medium text-foreground truncate flex-1">{user.name}</span>
+                <div className="[&_svg]:size-4">
+                  {user.viewed ? (
+                    <CircleCheckBig className="text-green-500" />
+                  ) : user.assignmentId ? (
+                    <CircleDashed className="text-muted-foreground" />
+                  ) : (
+                    <CircleMinus className="text-red-500" />
+                  )}
+                </div>
               </div>
-
-              <div className="text-sm">
-                {user.viewed ? (
-                  <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                    Visto
-                  </span>
-                ) : user.assignmentId ? (
-                  <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-100 text-amber-800">
-                    Pendiente
-                  </span>
-                ) : (
-                  <span className="text-slate-400 italic text-xs">Sin asignar</span>
-                )}
-              </div>
-            </div>
+            </Card>
           ))}
         </div>
       </div>
@@ -152,6 +137,6 @@ export default function SecretSanta() {
           </div>
         </div>
       )} */}
-    </main>
+    </div>
   );
 }
