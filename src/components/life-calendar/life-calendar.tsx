@@ -1,4 +1,3 @@
-// components/life-calendar/life-calendar.tsx
 'use client';
 
 import { useMemo } from 'react';

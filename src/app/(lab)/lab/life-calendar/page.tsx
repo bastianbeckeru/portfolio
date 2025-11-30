@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+import { type Metadata } from 'next';
 import LifeCalendar from '@/components/life-calendar';
 
 export const metadata: Metadata = {

@@ -1,6 +1,6 @@
 'use client';
 
-import { memo, CSSProperties } from 'react';
+import { memo, type CSSProperties } from 'react';
 import { motion } from 'motion/react';
 import { cn } from '@/lib/utils';
 import {

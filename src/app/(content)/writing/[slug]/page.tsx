@@ -1,7 +1,7 @@
 import { AspectRatio } from '@/components/ui/aspect-ratio';
 import { allItems } from '@/utils/content';
 import { formatDate } from '@/utils/dateHelper';
-import { Metadata } from 'next';
+import { type Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 
