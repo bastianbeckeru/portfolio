@@ -15,7 +15,7 @@ export function RevealSuccess({
     const [isRevealed, setIsRevealed] = useState(false);
 
     return (
-        <main className="min-h-screen flex items-center justify-center p-4 overflow-hidden">
+        <main className="flex items-center justify-center p-4 overflow-hidden">
             <div
                 className="w-full max-w-md text-center"
                 style={{ perspective: "1000px" }}
