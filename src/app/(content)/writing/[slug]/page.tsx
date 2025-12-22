@@ -18,18 +18,20 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
   const publicationDate = formatDate(metadata.publishedAt);
 
   return (
-    <article className='mx-auto md:max-w-3xl md:pt-8 font-serif'>
-      <AspectRatio ratio={16 / 9} className='md:rounded-md overflow-hidden'>
-        <Image
-          src={metadata.image}
-          alt={metadata.title}
-          fill
-          className='object-cover'
-        />
-      </AspectRatio>
+    <article className='max-w-2xl mx-auto px-8 md:px-4 py-12 md:py-24 font-serif'>
+      {metadata.image && (
+        <AspectRatio ratio={16 / 9} className='md:rounded-md overflow-hidden'>
+          <Image
+            src={metadata.image}
+            alt={metadata.title}
+            fill
+            className='object-cover'
+          />
+        </AspectRatio>
+      )}
 
-      <div className='py-6 gap-2 flex flex-col px-8 justify-center items-center'>
-        <p className='font-bold tracking-wide text-muted-foreground text-xs uppercase'>
+      <div className='py-6 gap-2 flex flex-col justify-center items-center'>
+        <p className='font-bold tracking-wider text-muted-foreground text-xs uppercase'>
           {metadata.category}
         </p>
         <h2 className='font-medium text-center text-xl md:text-4xl'>
@@ -38,7 +40,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
         <p className='text-muted-foreground text-xs'>
           <time dateTime={metadata.publishedAt}>{publicationDate}</time>
         </p>
-        <div className='h-px bg-muted-foreground w-full' />
+        <div className='h-px bg-border w-full' />
         <p className='text-xs'>
           <span className='italic mr-0.5'>por </span>
           {metadata.authors.map(
@@ -61,7 +63,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
         </p>
       </div>
 
-      <div className='py-2 px-6 prose dark:prose-invert'>
+      <div className='prose dark:prose-invert'>
         <Article />
       </div>
     </article>

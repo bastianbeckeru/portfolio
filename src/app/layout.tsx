@@ -1,21 +1,28 @@
 import type { Metadata } from 'next';
 import type { PropsWithChildren } from 'react';
 import '@/styles/globals.css';
-import { Merriweather, Poppins } from 'next/font/google';
+import {
+  Inter,
+  Merriweather,
+  Newsreader,
+  Nunito_Sans,
+  Poppins,
+} from 'next/font/google';
 
-const poppins = Poppins({
-  variable: '--font-poppins',
+const nunito = Nunito_Sans({
+  variable: '--font-nunito',
   subsets: ['latin'],
   style: ['normal', 'italic'],
-  weight: ['400', '500', '600', '700', '800'], // base, medium, semi-bold, bold, extra-bold
   display: 'swap',
+  weight: ['400', '500', '600', '700'],
 });
 
-const merriweather = Merriweather({
-  variable: '--font-merriweather',
+const newsreader = Newsreader({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700', '800'],
   display: 'swap',
+  style: ['normal', 'italic'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-newsreader',
 });
 
 export const metadata: Metadata = {
@@ -27,23 +34,25 @@ export const metadata: Metadata = {
   },
 
   description:
-    'Estudiante de Ingeniería y amante del diseño, explorando cómo crear experiencias digitales con propósito.',
+    'Ingeniero Civil Industrial. Diseño sistemas simples y rigurosos para transformar problemas complejos en impacto real.',
 
   keywords: [
-    'Bastián Becker',
     'Bastián Becker Urzúa',
-    'Desarrollador Web',
-    'Diseñador UX/UI',
-    'React',
-    'Next.js',
-    'TypeScript',
-    'Desarrollo Frontend',
-    'Portfolio Ingeniería',
-    'Visualización de datos',
     'Ingeniero Civil Industrial',
-    'Ingeniero Chile',
-    'Ingeniero UDP',
-    'Ingeniero Universidad Diego Portales',
+    'Planificación y control de gestión',
+    'Desarrollo web',
+    'Next.js',
+    'React',
+    'TypeScript',
+    'Tailwind CSS',
+    'SQL',
+    'AWS',
+    'Diseño de sistemas',
+    'Innovación',
+    'Eficiencia',
+    'Política y bien común',
+    'Universidad Diego Portales',
+    'Santiago de Chile',
   ],
 
   authors: [{ name: 'Bastián Becker Urzúa', url: 'https://bastianbecker.cl' }],
@@ -96,9 +105,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<PropsWithChildren>) {
   return (
     <html lang='es'>
-      <body
-        className={`${poppins.variable} ${merriweather.variable} antialiased`}
-      >
+      <body className={`${nunito.variable} ${newsreader.variable} antialiased`}>
         {children}
       </body>
     </html>

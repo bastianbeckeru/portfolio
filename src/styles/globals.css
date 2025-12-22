@@ -16,11 +16,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
 :root {
   --radius: 0.625rem;
   --background: oklch(0.985 0.001 106.423);
@@ -54,6 +49,7 @@ a {
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+  --warm: oklch(0.98 0.005 73.684);
 }
 
 .dark {
@@ -88,6 +84,7 @@ a {
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+  --warm: oklch(0.98 0.005 73.684);
 }
 
 @theme inline {
@@ -126,10 +123,10 @@ a {
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
-  --font-sans: var(--font-poppins), -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji',
-    'Segoe UI Emoji';
-  --font-serif: var(--font-merriweather), serif;
+  --color-warm: var(--warm);
+  --font-sans: var(--font-nunito), -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+  --font-serif: var(--font-newsreader), serif;
 }
 
 @layer base {
@@ -137,7 +134,11 @@ a {
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-warm text-foreground;
+  }
+  a {
+    @apply decoration-stone-300 decoration-1 underline-offset-2
+           hover:decoration-foreground transition-colors cursor-pointer;
   }
 }
 
@@ -157,7 +158,7 @@ a {
 /* TYPOGRAPHY */
 @layer components {
   .prose {
-    @apply pt-4 pb-16 md:max-w-prose w-full px-6 md:px-8 mx-auto font-serif
+    @apply md:max-w-prose w-full font-serif
            text-base leading-7 text-neutral-700 dark:text-neutral-300 
            min-h-dvh;
   }

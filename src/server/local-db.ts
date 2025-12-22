@@ -125,53 +125,40 @@ export const participants: Person[] = [
 ];
 
 export const projects = [
-  /*   {
-    title: 'FEDEP',
-    description:
-      'Sitio web oficial de la Federación de Estudiantes de la Universidad Diego Portales.',
-    image: '/placeholder.svg',
-    tech: ['NextJS', 'TypeScript', 'TailwindCSS'],
-    github: '#',
-    live: 'fedep.cl',
-    category: 'SITE',
-  }, */
   {
     title: 'MiMalla',
-    description:
-      'Plataforma de gestión de mallas curriculares para estudiantes universitarios.',
+    description: 'Gestiona tu malla curricular.',
+    url: 'https://mimalla.vercel.app',
     image: '/placeholder.svg',
     tech: ['NextJS', 'TypeScript', 'TailwindCSS'],
     github: null,
-    live: 'https://mimalla.vercel.app',
     category: 'APP',
   },
   {
     title: 'Calendar of Your Life',
-    description:
-      'Una visualización inspirada en Kurzgesagt que muestra las semanas y meses de tu vida.',
+    description: 'Visualiza tu vida en semanas.',
+    url: '/lab/life-calendar',
     image: '/placeholder.svg',
     tech: ['React', 'TypeScript'],
     github: 'https://github.com/bastianbeckeru/portfolio',
-    live: '/lab/life-calendar',
     category: 'LAB',
   },
   {
-    title: 'Instagram Followers Tool',
-    description:
-      'Herramienta para gestionar y analizar seguidores de Instagram.',
+    title: 'Instagram Follower Analyzer',
+    description: 'Analiza seguidores y seguidos.',
     image: '/placeholder.svg',
     tech: ['React', 'TypeScript'],
     github: 'https://github.com/bastianbeckeru/portfolio',
-    live: '/lab/instagram',
+    url: '/lab/instagram',
     category: 'LAB',
   },
   {
     title: 'Secret Santa',
-    description: 'App sencilla para organizar sorteos secretos.',
+    description: 'Amigo secreto con restricciones.',
     image: '/placeholder.svg',
     tech: ['NextJS', 'SQLite'],
     github: 'https://github.com/bastianbeckeru/portfolio',
-    live: '/lab/secret-santa',
+    url: '/lab/secret-santa',
     category: 'LAB',
   },
 ];
@@ -201,34 +188,4 @@ export const experiences = [
     description:
       'Coordiné iniciativas estudiantiles, gestioné proyectos con impacto en bienestar y representatividad del estudiantado.',
   },
-];
-
-export const articles = [
-  {
-    title: '¿Quién fue y es Diego Portales?',
-    description:
-      'Diego Portales fue un destacado político y empresario chileno, considerado uno de los padres de la patria en Chile. Su legado perdura en la historia del país.',
-    image: '/images/diego-portales.webp',
-    publishedAt: '2025-07-21',
-    readTime: 5,
-    category: 'Historia',
-  },
-  {
-    title: 'Participación y Representación Estudiantil',
-    description:
-      'Explora la importancia de la participación estudiantil en la vida académica y social, y cómo influye en la toma de decisiones dentro de las instituciones educativas.',
-    image: '/placeholder.svg',
-    publishedAt: '2025-07-21',
-    readTime: 2,
-    category: 'Política',
-  },
-  /*   {
-    title: 'El Síndrome de la Vicepresidencia',
-    description:
-      'Un análisis sobre los desafíos y oportunidades que enfrentan los vicepresidentes en las organizaciones estudiantiles.',
-    image: '/placeholder.svg?height=300&width=400',
-    publishedAt: '2025-07-21',
-    readTime: 2,
-    category: 'Política',
-  }, */
 ];
