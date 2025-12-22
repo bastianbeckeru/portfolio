@@ -72,32 +72,38 @@ export default function Home() {
           Escritos
         </h2>
         <div className='flex flex-col gap-2'>
-          {articles.map((article) => {
-            const slug = slugify(article.metadata.title);
+          {articles
+            .sort(
+              (a, b) =>
+                new Date(b.metadata.publishedAt).getTime() -
+                new Date(a.metadata.publishedAt).getTime()
+            )
+            .map((article) => {
+              const slug = slugify(article.metadata.title);
 
-            return (
-              <Link
-                key={slug}
-                href={`/writing/${slug}`}
-                className='group w-fit  gap-2 flex flex-row items-start'
-              >
-                <span className='text-stone-400 select-none'>➢</span>
+              return (
+                <Link
+                  key={slug}
+                  href={`/writing/${slug}`}
+                  className='group w-fit  gap-2 flex flex-row items-start'
+                >
+                  <span className='text-stone-400 select-none'>➢</span>
 
-                <div className='space-x-2 '>
-                  <span
-                    className='font-medium underline decoration-stone-300 decoration-1 underline-offset-2
+                  <div className='space-x-2 '>
+                    <span
+                      className='font-medium underline decoration-stone-300 decoration-1 underline-offset-2
            group-hover:decoration-foreground transition-colors text-left '
-                  >
-                    {article.metadata.title}
-                  </span>
+                    >
+                      {article.metadata.title}
+                    </span>
 
-                  <time className='text-sm text-muted-foreground whitespace-nowrap'>
-                    {article.metadata.readTime} min
-                  </time>
-                </div>
-              </Link>
-            );
-          })}
+                    <time className='text-sm text-muted-foreground whitespace-nowrap'>
+                      {article.metadata.readTime} min
+                    </time>
+                  </div>
+                </Link>
+              );
+            })}
         </div>
       </section>
 
