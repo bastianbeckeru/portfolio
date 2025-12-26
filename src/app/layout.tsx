@@ -8,6 +8,7 @@ import {
   Nunito_Sans,
   Poppins,
 } from 'next/font/google';
+import { ThemeProvider } from '@/components/theme-provider';
 
 const nunito = Nunito_Sans({
   variable: '--font-nunito',
@@ -104,9 +105,16 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<PropsWithChildren>) {
   return (
-    <html lang='es'>
+    <html lang='es' suppressHydrationWarning>
       <body className={`${nunito.variable} ${newsreader.variable} antialiased`}>
-        {children}
+        <ThemeProvider
+          attribute='class'
+          defaultTheme='system'
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

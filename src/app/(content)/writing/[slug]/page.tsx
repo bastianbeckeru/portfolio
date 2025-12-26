@@ -34,9 +34,9 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
         <p className='font-bold tracking-wider text-muted-foreground text-xs uppercase'>
           {metadata.category}
         </p>
-        <h2 className='font-medium text-center text-xl md:text-4xl'>
+        <h1 className='text-foreground text-center scroll-m-20 text-4xl font-extrabold tracking-tight text-balance'>
           {metadata.title}
-        </h2>
+        </h1>
         <p className='text-muted-foreground text-xs'>
           <time dateTime={metadata.publishedAt}>{publicationDate}</time>
         </p>

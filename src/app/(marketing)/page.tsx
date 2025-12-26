@@ -83,7 +83,7 @@ export default function Home() {
                   href={`/writing/${slug}`}
                   className='group w-fit  gap-2 flex flex-row items-start'
                 >
-                  <span className='text-stone-400 select-none'>➢</span>
+                  <span className='text-ring select-none'>➢</span>
 
                   <div className='space-x-2 '>
                     <span
@@ -117,7 +117,7 @@ export default function Home() {
                 className='font-medium underline group inline-flex items-center'
               >
                 {project.title}
-                <ArrowUpRightIcon className='ml-0.5 size-4 text-stone-400 transition-opacity opacity-0 group-hover:opacity-100' />
+                <ArrowUpRightIcon className='ml-0.5 size-4 text-ring transition-opacity opacity-0 group-hover:opacity-100' />
               </a>
 
               <p className='text-muted-foreground text-balance text-left'>
