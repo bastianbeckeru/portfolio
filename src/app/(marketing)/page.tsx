@@ -118,10 +118,10 @@ export default function Home() {
                 href={project.url}
                 target='_blank'
                 rel='noopener noreferrer'
-                className='font-medium underline inline-flex items-center'
+                className='font-medium underline group inline-flex items-center'
               >
                 {project.title}
-                <ArrowUpRight className='ml-0.5 size-4 text-stone-400 transition-colors' />
+                <ArrowUpRight className='ml-0.5 size-4 text-stone-400 transition-opacity opacity-0 group-hover:opacity-100' />
               </a>
 
               <p className='text-muted-foreground text-balance text-left'>

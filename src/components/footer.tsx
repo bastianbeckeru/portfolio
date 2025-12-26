@@ -1,14 +1,13 @@
-const phrases = [
-  'Simplicity is the ultimate sophistication',
-  'Stay hungry. Stay foolish.',
-];
+import { quotes } from '@/server/local-db';
 
 export default function Footer() {
+  const randomQuote = quotes[Math.floor(Math.random() * quotes.length)]!;
+
   return (
     <footer className='border-t'>
       <div className='max-w-2xl mx-auto px-8 md:px-4 py-2'>
         <p className='font-serif italic text-muted-foreground text-left'>
-          {phrases[Math.floor(Math.random() * phrases.length)]}
+          "{randomQuote.text}" — {randomQuote.author}
         </p>
       </div>
     </footer>

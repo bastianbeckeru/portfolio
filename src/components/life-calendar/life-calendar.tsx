@@ -29,11 +29,12 @@ export default function LifeCalendar() {
   return (
     <div className='flex mt-6 mb-16 w-dvw min-h-dvh flex-col items-center justify-center gap-2'>
       <header className='px-6 text-center mb-2'>
-        <h1 className='font-bold text-balance text-4xl mb-2 tracking-wide uppercase'>
+        <h1 className='font-bold text-balance font-serif text-4xl mb-2 tracking-wide uppercase'>
           Calendar of your life
         </h1>
-        <p className='font-semibold text-balance text-xs uppercase tracking-wide text-muted-foreground'>
-          Time is limited and precious. How do you want to spend it?
+        <p className='font-medium text-balance text-sm tracking-wide text-muted-foreground'>
+          Time is <span className='italic font-serif lowercase'>limited</span>{' '}
+          and precious. How do you want to spend it?
         </p>
       </header>
 

@@ -127,7 +127,7 @@ export const participants: Person[] = [
 export const projects = [
   {
     title: 'MiMalla',
-    description: 'Gestiona tu malla curricular.',
+    description: 'Gestiona tu avance curricular.',
     url: 'https://mimalla.vercel.app',
     image: '/placeholder.svg',
     tech: ['NextJS', 'TypeScript', 'TailwindCSS'],
@@ -187,5 +187,20 @@ export const experiences = [
     period: 'Dic 2023 – Nov 2024',
     description:
       'Coordiné iniciativas estudiantiles, gestioné proyectos con impacto en bienestar y representatividad del estudiantado.',
+  },
+];
+
+export const quotes = [
+  {
+    text: 'Simplicity is the ultimate sophistication.',
+    author: 'Steve Jobs',
+  },
+  {
+    text: 'Stay hungry. Stay foolish.',
+    author: 'Steve Jobs',
+  },
+  {
+    text: 'Focusing is about saying no.',
+    author: 'Steve Jobs',
   },
 ];

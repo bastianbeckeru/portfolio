@@ -12,10 +12,12 @@ import {
   PopoverTrigger,
 } from '@/components/ui/popover';
 import { useUserStore } from '@/store/user-store';
+import { Input } from '../ui/input';
 
 export const BirthDateSelector = memo(function BirthDateSelector() {
+  const { birthDate, lifeExpectancy, setBirthDate, setLifeExpectancy } =
+    useUserStore();
   const [open, setOpen] = useState(false);
-  const { birthDate, setBirthDate } = useUserStore();
   const birthDateObj = birthDate ? new Date(birthDate) : undefined;
 
   const handleDateSelect = (date: Date | undefined) => {
@@ -29,7 +31,7 @@ export const BirthDateSelector = memo(function BirthDateSelector() {
     : 'Selecciona tu fecha de nacimiento';
 
   return (
-    <div className='flex flex-col gap-3'>
+    <div className='flex flex-row gap-3'>
       <Label htmlFor='birth-date' className='px-1 sr-only'>
         Fecha de nacimiento
       </Label>
@@ -59,6 +61,14 @@ export const BirthDateSelector = memo(function BirthDateSelector() {
           />
         </PopoverContent>
       </Popover>
+
+      {/*       <Input
+        type='date'
+        value={birthDate ? birthDate.slice(0, 10) : ''}
+        onChange={(e) => handleDateSelect(new Date(e.target.value))}
+      /> */}
+
+      <Input type='number' value={lifeExpectancy} disabled className='w-16' />
     </div>
   );
 });

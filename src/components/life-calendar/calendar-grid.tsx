@@ -10,7 +10,7 @@ import {
   WEEKS_PER_YEAR,
   MONTHS_PER_YEAR,
 } from './constants';
-import styles from '@/styles/calendar.module.css';
+import styles from './calendar.module.css';
 
 interface CalendarGridProps {
   lifeExpectancy: number;
@@ -23,7 +23,7 @@ export const CalendarGrid = memo(function CalendarGrid({
   mode,
   lived,
 }: CalendarGridProps) {
-  const multiplier = mode === 'months' ? MONTHS_PER_YEAR : WEEKS_PER_YEAR;
+  const multiplier = mode === 'weeks' ? WEEKS_PER_YEAR : MONTHS_PER_YEAR;
   const totalCells = lifeExpectancy * multiplier;
 
   const getColors = (idx: number): CSSProperties => {
@@ -53,7 +53,8 @@ export const CalendarGrid = memo(function CalendarGrid({
         animate='animate'
         className={styles.calendar}
         style={{
-          gridTemplateColumns: `repeat(${multiplier}, 1rem)`,
+          gridTemplateRows: `repeat(${lifeExpectancy}, ${GRID_SIZE}rem)`,
+          gridTemplateColumns: `repeat(${multiplier}, ${GRID_SIZE}rem)`,
         }}
       >
         {Array.from({ length: totalCells }, (_, idx) => (
