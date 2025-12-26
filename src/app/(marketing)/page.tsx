@@ -1,10 +1,6 @@
-import { ArrowUpRight, ExternalLink, Github, Linkedin } from 'lucide-react';
-import { buttonVariants } from '@/components/ui/button';
+import { ArrowUpRight } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { cn } from '@/lib/utils';
-
 import { projects } from '@/server/local-db';
-import DownloadButton from '@/components/download-button';
 import { allItems as articles } from '@/utils/content';
 import Link from 'next/link';
 import { slugify } from '@/utils/strings';
@@ -16,7 +12,7 @@ export default function Home() {
       <section className='gap-6 flex flex-col h-auto md:flex-row items-start'>
         <div className='size-24 shrink-0'>
           <Avatar className='size-full border'>
-            <AvatarImage src='profile.png' alt='@bastianbeckeru' />
+            <AvatarImage src='profile.webp' alt='@bastianbeckeru' />
             <AvatarFallback>Bastián Becker</AvatarFallback>
           </Avatar>
         </div>

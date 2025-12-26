@@ -68,7 +68,7 @@ export const metadata: Metadata = {
       'Estudiante de Ingeniería y amante del diseño, explorando cómo crear experiencias digitales con propósito.',
     images: [
       {
-        url: '/profile.png', // 1200x630px
+        url: '/profile.webp', // 1200x630px
         width: 1200,
         height: 630,
         alt: 'Bastián Becker',
@@ -81,7 +81,7 @@ export const metadata: Metadata = {
     title: 'Bastián Becker',
     description:
       'Estudiante de Ingeniería y amante del diseño, explorando cómo crear experiencias digitales con propósito.',
-    images: ['/profile.png'],
+    images: ['/profile.webp'],
     creator: '@bastianbeckeru', // si tienes Twitter
   },
 
