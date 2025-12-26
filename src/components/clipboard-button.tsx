@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Check, Copy } from 'lucide-react';
+import { CheckIcon, CopyIcon } from 'lucide-react';
 import { Button } from './ui/button';
 
 export default function ClipboardButton({ text }: { text: string }) {
@@ -20,7 +20,7 @@ export default function ClipboardButton({ text }: { text: string }) {
       variant='ghost'
       className='text-muted-foreground hover:text-white [&_svg]:size-4'
     >
-      {copied ? <Check /> : <Copy />}
+      {copied ? <CheckIcon /> : <CopyIcon />}
     </Button>
   );
 }

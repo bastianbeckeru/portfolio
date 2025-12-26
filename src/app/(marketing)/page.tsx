@@ -1,9 +1,9 @@
-import { ArrowUpRight } from 'lucide-react';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import Link from 'next/link';
 import { projects } from '@/server/local-db';
 import { allItems as articles } from '@/utils/content';
-import Link from 'next/link';
 import { slugify } from '@/utils/strings';
+import { ArrowUpRightIcon } from 'lucide-react';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 export default function Home() {
   return (
@@ -117,7 +117,7 @@ export default function Home() {
                 className='font-medium underline group inline-flex items-center'
               >
                 {project.title}
-                <ArrowUpRight className='ml-0.5 size-4 text-stone-400 transition-opacity opacity-0 group-hover:opacity-100' />
+                <ArrowUpRightIcon className='ml-0.5 size-4 text-stone-400 transition-opacity opacity-0 group-hover:opacity-100' />
               </a>
 
               <p className='text-muted-foreground text-balance text-left'>

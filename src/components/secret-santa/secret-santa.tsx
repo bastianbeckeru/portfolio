@@ -6,7 +6,12 @@ import {
   secretSanta,
   getAllUsers,
 } from '@/app/actions/users';
-import { Check, CircleCheck, CircleCheckBig, CircleDashed, CircleMinus, Sparkles } from 'lucide-react';
+import {
+  CircleCheckBig,
+  CircleDashed,
+  CircleMinus,
+  Sparkles,
+} from 'lucide-react';
 import { Card } from '../ui/card';
 
 type DashboardUser = {
@@ -51,8 +56,11 @@ export default function SecretSanta() {
 
   const copyLinks = () => {
     const links = users
-      .filter(u => u.assignmentId)
-      .map(u => `${u.name}: ${window.location.origin}/lab/secret-santa/reveal?key=${u.assignmentId}`)
+      .filter((u) => u.assignmentId)
+      .map(
+        (u) =>
+          `${u.name}: ${window.location.origin}/lab/secret-santa/reveal?key=${u.assignmentId}`
+      )
       .join('\n');
     navigator.clipboard.writeText(links);
     alert('Enlaces copiados al portapapeles');
@@ -61,29 +69,33 @@ export default function SecretSanta() {
   return (
     <>
       {/* Participants Section */}
-      <main className="py-4">
-        <h2 className="text-lg font-bold mb-4 text-foreground flex items-center gap-2">
-          <Sparkles className="w-5 h-5 text-red-700" />
+      <main className='py-4'>
+        <h2 className='text-lg font-bold mb-4 text-foreground flex items-center gap-2'>
+          <Sparkles className='w-5 h-5 text-red-700' />
           Participantes
         </h2>
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+        <div className='grid grid-cols-2 sm:grid-cols-3 gap-2'>
           {users.map((user) => (
             <Card
               key={user.id}
-              className="p-2 border-border/50 hover:border-red-700/50 hover:bg-red-700/5 transition-all duration-200"
+              className='p-2 border-border/50 hover:border-red-700/50 hover:bg-red-700/5 transition-all duration-200'
             >
-              <div className="flex items-center gap-2">
-                <div className="size-6 rounded-full bg-gradient-to-br from-red-700 to-green-700 flex items-center justify-center flex-shrink-0">
-                  <span className="text-xs font-bold text-white">{user.name.charAt(0)}</span>
+              <div className='flex items-center gap-2'>
+                <div className='size-6 rounded-full bg-gradient-to-br from-red-700 to-green-700 flex items-center justify-center flex-shrink-0'>
+                  <span className='text-xs font-bold text-white'>
+                    {user.name.charAt(0)}
+                  </span>
                 </div>
-                <span className="text-xs font-medium text-foreground truncate flex-1">{user.name}</span>
-                <div className="[&_svg]:size-4">
+                <span className='text-xs font-medium text-foreground truncate flex-1'>
+                  {user.name}
+                </span>
+                <div className='[&_svg]:size-4'>
                   {user.viewed ? (
-                    <CircleCheckBig className="text-green-500" />
+                    <CircleCheckBig className='text-green-500' />
                   ) : user.assignmentId ? (
-                    <CircleDashed className="text-muted-foreground" />
+                    <CircleDashed className='text-muted-foreground' />
                   ) : (
-                    <CircleMinus className="text-red-500" />
+                    <CircleMinus className='text-red-500' />
                   )}
                 </div>
               </div>
@@ -91,7 +103,6 @@ export default function SecretSanta() {
           ))}
         </div>
       </main>
-
 
       {/*       <div className="fixed bottom-4 right-4">
         <button

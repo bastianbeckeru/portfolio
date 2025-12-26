@@ -1,8 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { Card, CardContent } from './ui/card';
-import { ExternalLink, Github } from 'lucide-react';
-import { AspectRatio } from './ui/aspect-ratio';
+import { AspectRatio } from '@/components/ui/aspect-ratio';
 import { slugify } from '@/utils/strings';
 import { formatDate } from '@/utils/dateHelper';
 

@@ -1,8 +1,9 @@
 'use client';
 
 import { useState, useRef } from 'react';
+import { DownloadIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Download, Loader2 } from 'lucide-react';
+import { Spinner } from '@/components/ui/spinner';
 
 type DownloadButtonProps = {
   media: {
@@ -59,8 +60,7 @@ export default function DownloadButton({ media }: DownloadButtonProps) {
       disabled={isDownloading}
       onClick={handleDownload}
     >
-      {name}{' '}
-      {isDownloading ? <Loader2 className='animate-spin' /> : <Download />}
+      {name} {isDownloading ? <Spinner /> : <DownloadIcon />}
     </Button>
   );
 }
