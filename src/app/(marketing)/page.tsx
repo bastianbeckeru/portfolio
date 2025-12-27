@@ -11,9 +11,9 @@ export default function Home() {
       {/* Hero Section */}
       <section className='gap-6 flex flex-col h-auto md:flex-row items-start'>
         <div className='size-24 shrink-0'>
-          <Avatar className='size-full border'>
+          <Avatar className='size-full border bg-muted'>
             <AvatarImage src='profile.webp' alt='@bastianbeckeru' />
-            <AvatarFallback>Bastián Becker</AvatarFallback>
+            <AvatarFallback delayMs={200}>BB</AvatarFallback>
           </Avatar>
         </div>
 
